@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+cache/*
+config/app.php
+=======
+.DS_Store
+>>>>>>> a bit of cleanup and adding themes/plugins
+vendor
+wp
+app/themes/redstar/

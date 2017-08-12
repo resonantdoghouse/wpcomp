@@ -43,7 +43,7 @@ define( 'DB_COLLATE', '' );
  * Set folder for root e.g. app
  */
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/app' );
-define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp-comp/app' );
+define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wpcomp/app' );
 define('WP_DEFAULT_THEME', 'minim');
 
 /**#@+

@@ -6,7 +6,7 @@
  * TODO: create a plugin to handle debugging
  *
  */
-$path = $_SERVER['DOCUMENT_ROOT'] . '/wp-comp';
+$path = $_SERVER['DOCUMENT_ROOT'] . '/wpcomp';
 require $path . "/vendor/autoload.php";
 
 $whoops = new \Whoops\Run;

@@ -14,7 +14,6 @@ $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
 
-
 /**
  * Debug with Kint
  *

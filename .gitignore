@@ -3,5 +3,6 @@ config/app.php
 .DS_Store
 vendor
 wp
-app/themes/inhabitent/
-app/plugins/inhabitent-functionality/
+app/plugins/*
+app/themes/*
+!app/themes/minim

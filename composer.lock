@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "48e5e7d419a22c7743da8c674faf01db",
+    "content-hash": "d3455d68a4e04d63d778205bba48d4b1",
     "packages": [
         {
             "name": "composer/installers",
@@ -366,6 +366,26 @@
             "homepage": "https://wordpress.org/plugins/custom-field-suite/"
         },
         {
+            "name": "wpackagist-plugin/pods",
+            "version": "2.6.10",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/pods/",
+                "reference": "tags/2.6.10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/pods.2.6.10.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/pods/"
+        },
+        {
             "name": "wpackagist-plugin/show-current-template",
             "version": "0.3.0",
             "source": {
@@ -387,15 +407,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "5.2",
+            "version": "5.3.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/5.2"
+                "reference": "tags/5.3.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.5.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.5.3.3.zip",
                 "reference": null,
                 "shasum": null
             },

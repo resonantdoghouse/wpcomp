@@ -26,6 +26,7 @@
     "wpackagist-plugin/wordpress-seo": "*",
     "wpackagist-plugin/show-current-template": "*",
     "wpackagist-plugin/custom-field-suite": "^2.5",
+    "wpackagist-plugin/pods": "^2.6",
     "filp/whoops": "^2.1",
     "kint-php/kint": "^2.1"
   },

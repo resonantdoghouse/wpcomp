@@ -7,3 +7,4 @@ app/plugins/*
 app/themes/*
 app/uploads/*
 !app/themes/minim
+.idea/*

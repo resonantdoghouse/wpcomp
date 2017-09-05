@@ -25,7 +25,6 @@ add_action("after_switch_theme", "minim_setup_theme");
 // add_action( 'after_setup_theme', 'minim_setup_theme' );
 
 
-
 /**
  * WordPress customizer fields
  * Basic text fields
@@ -121,26 +120,9 @@ function bcwmk_bg_image_output()
 
 // array of options to change
 $option = array(
-    // we don't want no description
-//    'blogdescription' => '',
-    // change category base
-//    'category_base' => '/cat',
-    // change tag base
-//    'tag_base' => '/label',
-    // disable comments
-//    'default_comment_status' => 'closed',
-    // disable trackbacks
-//    'use_trackback' => '',
-    // disable pingbacks
+    'blogdescription' => 'Minim theme',
     'default_ping_status' => 'closed',
-    // disable pinging
-//    'default_pingback_flag' => '',
-    // change the permalink structure
-    'permalink_structure' => '/%postname%/',
-    // dont use year/month folders for uploads
-//    'uploads_use_yearmonth_folders' => '',
-    // don't use those ugly smilies
-//    'use_smilies' => ''
+    'permalink_structure' => '/%postname%/'
 );
 
 // change the options!
@@ -151,8 +133,6 @@ foreach ($option as $key => $value) {
 // flush rewrite rules because we changed the permalink structure
 global $wp_rewrite;
 $wp_rewrite->flush_rules();
-
-
 
 
 ?>

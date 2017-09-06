@@ -22,13 +22,13 @@
   ],
   "require": {
     "wordpress/wordpress": "4.8.1",
-    "wpackagist-theme/twentyseventeen": "*",
+    "wpackagist-theme/twentysixteen": "*",
     "wpackagist-plugin/wordpress-seo": "*",
     "wpackagist-plugin/show-current-template": "*",
-    "wpackagist-plugin/custom-field-suite": "^2.5",
     "wpackagist-plugin/pods": "^2.6",
-    "filp/whoops": "^2.1",
-    "kint-php/kint": "^2.1"
+    "wpackagist-plugin/piklist": "^0.9.9.12",
+    "wpackagist-plugin/kint-debugger": "^1.2",
+    "wpackagist-plugin/custom-field-suite": "^2.5.10"
   },
   "extra": {
     "webroot-dir": "wp/",

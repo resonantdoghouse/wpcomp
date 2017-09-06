@@ -1,9 +1,9 @@
 <?php
 
 // Includes
-include_once __DIR__ . '/includes/setup.php';
-include_once __DIR__ . '/includes/enqueue.php';
-include_once __DIR__ . '/includes/customizer.php';
+include_once __DIR__ . '/inc/setup.php';
+include_once __DIR__ . '/inc/enqueue.php';
+include_once __DIR__ . '/inc/customizer.php';
 
 /**
  * Setup

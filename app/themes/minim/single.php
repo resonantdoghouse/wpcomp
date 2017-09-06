@@ -11,30 +11,40 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
+
+
 		<?php while ( have_posts() ) : the_post(); ?>
 
+
+            <div class="owl-carousel">
+				<?php
+
+				$images  = get_post_meta( get_the_ID(), 'custom_upload_media', false );
+				$uploads = wp_upload_dir();
+
+				foreach ( $images as $image ) {
+					$filename = basename( get_attached_file( $image ) );
+					echo '<div><img src="' . esc_url( $uploads['baseurl'] . '/' . $filename ) . '"></div>';
+				}
+				?>
+            </div>
+
 			<?php
+			$field_one = get_post_meta( get_the_ID(), 'field_one', false );
 
-			// Include the single post content template.
-			get_template_part( 'template-parts/content', 'single' );
-			?>
-
-			<?php
-
-
-			$field_one = get_post_meta( get_the_ID(), 'field_one', true );
+			foreach ( $field_one as $field ) {
+				echo '<p>';
+				echo $field;
+				echo '</p>';
+			}
 
 			$field_two = get_post_meta( get_the_ID(), 'field_two', true );
-
-			echo $field_one;
-
 			?>
 
-            <div style="width: 50px; height: 50px; border-radius: 100%;
-                    background: <?php echo $field_two; ?>;"></div>
+            <div style="background: <?php echo $field_two; ?>; width: 50px; height: 50px; border-radius: 100%;"></div>
+
 
 			<?php
-
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) {

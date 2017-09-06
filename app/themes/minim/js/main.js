@@ -9,5 +9,4 @@
         autoplayHoverPause: true
     });
 
-
 })(jQuery);

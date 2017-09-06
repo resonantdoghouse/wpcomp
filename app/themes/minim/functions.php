@@ -13,4 +13,7 @@ add_action("after_switch_theme", "minim_setup_theme");
 // runs everytime the page loads
 // add_action( 'after_setup_theme', 'minim_setup_theme' );
 
+
+
+
 ?>

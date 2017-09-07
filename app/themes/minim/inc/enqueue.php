@@ -16,9 +16,6 @@ add_action('wp_enqueue_scripts', 'minim_enqueue_sripts');
 
 
 
-
-
-
 function my_custom_init() {
 	remove_post_type_support( 'post', 'custom-fields' );
 }

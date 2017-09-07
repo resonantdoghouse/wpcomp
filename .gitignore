@@ -4,6 +4,7 @@ config/app.php
 vendor
 wp
 app/plugins/*
+!app/plugins/dev-*
 app/themes/*
 app/uploads/*
 !app/themes/minim

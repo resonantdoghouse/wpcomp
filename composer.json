@@ -28,7 +28,8 @@
     "wpackagist-plugin/pods": "^2.6",
     "wpackagist-plugin/piklist": "^0.9.9.12",
     "wpackagist-plugin/kint-debugger": "^1.2",
-    "wpackagist-plugin/custom-field-suite": "^2.5.10"
+    "wpackagist-plugin/custom-field-suite": "^2.5.10",
+    "wpackagist-plugin/wp-helpers": "^1.17.0"
   },
   "extra": {
     "webroot-dir": "wp/",

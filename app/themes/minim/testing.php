@@ -13,7 +13,17 @@ get_header();
 
 			<?php
 
+//			$test_repeat = CFS()->get( 'test_loop' );
+//			foreach ( $test_repeat as $field ) {
+//				echo $field['test_loop_field'];
+//			}
+
+			?>
+
+			<?php
+
 			$html = CFS()->get( 'test_field' );
+			$url = CFS()->get( 'url' );
 
 			// array of allowed html tags for WP KSES
 			$allowed_tags = array(
@@ -74,6 +84,18 @@ get_header();
 
 			<?php
             // echo $html;
+            ?>
+
+            <h1>esc_url</h1>
+            <pre>
+            </pre>
+            <h2>Output</h2>
+            <hr>
+            <?php
+
+//            echo $url;
+            echo '<br>';
+            echo(esc_url($url));
             ?>
 
 		<?php endwhile; ?>

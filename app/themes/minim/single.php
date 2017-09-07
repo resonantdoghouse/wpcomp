@@ -12,9 +12,7 @@ get_header(); ?>
 <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
 
-
 		<?php while ( have_posts() ) : the_post(); ?>
-
 
             <div class="owl-carousel">
 				<?php
@@ -43,7 +41,6 @@ get_header(); ?>
 
             <div style="background: <?php echo $field_two; ?>; width: 50px; height: 50px; border-radius: 100%;"></div>
 
-
 			<?php
 
 			// If comments are open or we have at least one comment, load up the comment template.
@@ -68,10 +65,8 @@ get_header(); ?>
 				) );
 			}
 
-			// End of the loop.
 		endwhile;
 		?>
-
 
     </main><!-- .site-main -->
 

@@ -5,12 +5,17 @@
  *
  */
 
+define( 'POST_TYPE', 'bass' );
+
+add_action( 'init', 'custom_post_type' );
+add_filter( 'single_template', 'dev_cpt_single_template' );
+
 
 function custom_post_type() {
 
 	$txt_dom = 'dev-cpt';
 
-	$pt_name        = 'Bass';
+	$pt_name        = POST_TYPE;
 	$pt_name_single = 'Bass';
 	$pt_name_plural = 'Basses';
 
@@ -35,18 +40,18 @@ function custom_post_type() {
 
 
 	$labels = array(
-		'name'               => __( $pt_name, 'cmap' ),
-		'singular_name'      => __( $pt_name_single, 'cmap' ),
-		'add_new'            => __( 'Add New', 'cmap' ),
-		'add_new_item'       => __( 'Add New ' . $pt_name_single, 'cmap' ),
-		'edit_item'          => __( 'Edit ' . $pt_name_single, 'cmap' ),
-		'new_item'           => __( 'New ' . $pt_name_single, 'cmap' ),
-		'all_items'          => __( 'All ' . $pt_name_plural, 'cmap' ),
-		'view_item'          => __( 'View ' . $pt_name_single, 'cmap' ),
-		'search_items'       => __( 'Search ' . $pt_name_plural, 'cmap' ),
-		'not_found'          => __( 'No ' . $pt_name_plural . ' found', 'cmap' ),
-		'not_found_in_trash' => __( 'No ' . $pt_name_plural . ' found in Trash', 'cmap' ),
-		'menu_name'          => __( $pt_name_plural, 'cmap' )
+		'name'               => __( $pt_name, $txt_dom ),
+		'singular_name'      => __( $pt_name_single, $txt_dom ),
+		'add_new'            => __( 'Add New', $txt_dom ),
+		'add_new_item'       => __( 'Add New ' . $pt_name_single, $txt_dom ),
+		'edit_item'          => __( 'Edit ' . $pt_name_single, $txt_dom ),
+		'new_item'           => __( 'New ' . $pt_name_single, $txt_dom ),
+		'all_items'          => __( 'All ' . $pt_name_plural, $txt_dom ),
+		'view_item'          => __( 'View ' . $pt_name_single, $txt_dom ),
+		'search_items'       => __( 'Search ' . $pt_name_plural, $txt_dom ),
+		'not_found'          => __( 'No ' . $pt_name_plural . ' found', $txt_dom ),
+		'not_found_in_trash' => __( 'No ' . $pt_name_plural . ' found in Trash', $txt_dom ),
+		'menu_name'          => __( $pt_name_plural, $txt_dom )
 	);
 
 	$args = array(
@@ -70,8 +75,19 @@ function custom_post_type() {
 
 	);
 
-	register_post_type( $pt_name, $args );
+	register_post_type( POST_TYPE, $args );
 
 }
 
-add_action( 'init', 'custom_post_type' );
+
+function dev_cpt_single_template( $single_template ) {
+	global $post;
+	global $pt_name;
+
+	if ( $post->post_type == POST_TYPE ) {
+		$single_template = dirname( __FILE__ ) . '/post-type-template.php';
+	}
+
+	return $single_template;
+}
+

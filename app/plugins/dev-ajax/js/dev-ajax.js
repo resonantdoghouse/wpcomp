@@ -4,7 +4,7 @@
         postId = 1,
         html = '';
 
-    $('.site-content').append('<div class="ajax-post"></div><div class="ajax-post__content"></div>');
+    $('.site-header').prepend('<div class="ajax-post"></div><div class="ajax-post__content"></div>');
 
 
     // initial call to load data
@@ -44,8 +44,21 @@
         }).done(function (data) {
 
             $('.ajax-post__content').html(data.excerpt.rendered);
+            $('.modal-content').html(data.content.rendered);
+            $("#demo01").click();
 
         }).fail({});
     }
+
+    $('.site-header').append('<a id="demo01" href="#animatedModal">DEMO01</a>');
+    $('.site-header').append('<div id="animatedModal"><div class="close-animatedModal">CLOSE MODAL</div><div class="modal-content">Content</div></div>');
+
+
+    $("#demo01").animatedModal({
+        "color": "pink",
+        "animationDuration": ".6s",
+        "animatedIn": "fadeInDownBig"
+    });
+
 
 })(jQuery);

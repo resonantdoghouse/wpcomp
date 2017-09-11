@@ -5,7 +5,24 @@
 
 get_header();
 
+
+//
+
+/**
+ *
+ */
+
+
+
+
+
+/**
+ * Page Templates
+ */
+
+
 ?>
+
 
 <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
@@ -64,7 +81,7 @@ get_header();
 
             <h1>wp_kses_post</h1>
             <pre>
-                echo wp_kses_post( $html );
+                echo wp_kses_post( CFS()->get( 'test_field' ) );
             </pre>
 
             <h2>Output</h2>
@@ -83,17 +100,18 @@ get_header();
 			<?= esc_html( $html ); ?>
 
 			<?php
-            // echo $html;
+//             echo $html;
             ?>
 
             <h1>esc_url</h1>
             <pre>
+                echo(esc_url($url));
             </pre>
             <h2>Output</h2>
             <hr>
             <?php
 
-//            echo $url;
+//             echo $url;
             echo '<br>';
             echo(esc_url($url));
             ?>

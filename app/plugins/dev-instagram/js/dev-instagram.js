@@ -1,26 +1,33 @@
 (function ($) {
 
-    var spectagramComplete = function(){
-        console.log('spectagramComplete');
-        setTimeout(createCarousel, 1000);
-    }
+    // https://github.com/adrianengine/jquery-spectragram/wiki/How-to-get-Instagram-API-access-token-and-fix-your-broken-feed
+
+    var spectagramComplete = function () {
+
+        $(window).on("load", function () {
+            createCarousel();
+        });
+
+    };
 
     var createCarousel = function () {
 
+        console.log('works');
+
         $('.owl-carousel').owlCarousel({
             stagePadding: 10,
-            loop:true,
-            margin:10,
-            nav:true,
-            responsive:{
-                0:{
-                    items:1
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
                 },
-                600:{
-                    items:3
+                600: {
+                    items: 3
                 },
-                1000:{
-                    items:5
+                1000: {
+                    items: 5
                 }
             }
         });
@@ -49,7 +56,7 @@
 
 
         }
-    }
+    };
 
     Spectra.init();
 

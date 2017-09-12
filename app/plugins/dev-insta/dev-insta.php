@@ -1,9 +1,19 @@
 <?php
 /**
- * Plugin Name: Dev Instagram
- *
+ * Plugin Name: Dev Insta
+ * Text Domain: dev-insta
+ * Description: Instagram plugin
  */
-function devinstagram_enqueue_scripts() {
+
+if ( ! function_exists( 'add_action' ) ) {
+	echo 'Not allowed!';
+	exit();
+}
+
+add_action( 'wp_enqueue_scripts', 'dev_insta_enqueue_scripts' );
+
+
+function dev_insta_enqueue_scripts() {
 
 	wp_enqueue_style( 'dev-instagram-owl-carousel', plugin_dir_url( __FILE__ ) . '/lib/owl-carousel/owl.carousel.min.css' );
 	wp_enqueue_style( 'dev-instagram-owl-theme', plugin_dir_url( __FILE__ ) . '/lib/owl-carousel/owl.theme.default.min.css' );
@@ -20,5 +30,5 @@ function devinstagram_enqueue_scripts() {
 
 }
 
-add_action( 'wp_enqueue_scripts', 'devinstagram_enqueue_scripts' );
+
 

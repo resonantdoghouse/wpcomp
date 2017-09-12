@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Dev CPT
- * text-domain: dev-cpt
- *
+ * Description: Custom post type of cats for using wp-json with google maps
+ * Text Domain: dev-cpt
  */
 
 if ( ! function_exists( 'add_action' ) ) {

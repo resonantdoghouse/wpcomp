@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Dev Tax
- * description: custom taxonomies used with Dev CPT
- * text-domain: dev-tax
+ * Description: custom taxonomies used with Dev CPT
+ * Text Domain: dev-tax
  */
 
 if ( ! function_exists( 'add_action' ) ) {

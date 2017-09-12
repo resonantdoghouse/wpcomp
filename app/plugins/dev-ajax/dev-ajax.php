@@ -1,11 +1,13 @@
 <?php
 /**
  * Plugin Name: Dev Ajax
+ * Description: Ajax testing
+ * Text Domain: dev-ajax
  */
 
 
 add_action( 'wp_enqueue_scripts', 'devajax_enqueue_scripts' );
-add_action( 'theme_page_templates', 'devajax_template' );
+add_action( 'page_template', 'dev_ajax_template' );
 
 function devajax_enqueue_scripts() {
 
@@ -17,8 +19,11 @@ function devajax_enqueue_scripts() {
 
 }
 
-function devajax_template( $templates ) {
-	$templates[ plugin_dir_url( __FILE__ ) . '/templates/test.php' ] = 'Test Template';
+function dev_ajax_template( $template ) {
+//	$template[ plugin_dir_url( __FILE__ ) . '/templates/test.php' ] = 'Test Template';
 
-	return $templates;
+	if ( is_page( 'testing' ) ) {
+		$template = dirname( __FILE__ ) . '/templates/test.php';
+	}
+	return $template;
 }

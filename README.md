@@ -1,9 +1,20 @@
-# Composer with WordPress
+## Composer & WordPress
 
-To **install** wordress and plugins/themes: run `composer install`
+Testing out composer with WordPress as a dependency.
 
-if adding packages run `composer update`
+Various 'dev' plugins and testing themes.
 
-#### Minim theme, testing
-Currently trying out [piklist](https://piklist.com/)
-& [owlcarousel](https://owlcarousel2.github.io/OwlCarousel2/)
+### Intsall
+
+To install wordress, plugins & themes run:
+
+`composer install`
+
+& if adding packages after installing run: 
+
+`composer update`
+
+You will need to **update wp-config.php**
+& add a database.
+
+**wp-content** has been 'moved' plugins & themes are now in the 'app' folder.

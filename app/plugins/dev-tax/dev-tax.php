@@ -10,15 +10,17 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit();
 }
 
-// Register Custom Taxonomy
-function cat_type_taxonomy() {
+add_action( 'init', 'bass_type_taxonomy', 0 );
+
+
+function bass_type_taxonomy() {
 
 	$txt_dom         = 'dev-tax';
 
-	$tax_name        = 'cattype';
-	$tax_name_single = 'Cat Type';
-	$tax_name_plural = 'Cat Types';
-	$tax_post_type   = 'cat';
+	$tax_name        = 'bass-type';
+	$tax_name_single = 'Bass Type';
+	$tax_name_plural = 'Bass Types';
+	$tax_post_type   = 'bass';
 
 	$labels = array(
 		'name'                       => _x( $tax_name_plural, 'Taxonomy General Name', $txt_dom ),
@@ -55,4 +57,3 @@ function cat_type_taxonomy() {
 
 }
 
-add_action( 'init', 'cat_type_taxonomy', 0 );

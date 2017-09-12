@@ -5,10 +5,16 @@
  *
  */
 
+if ( ! function_exists( 'add_action' ) ) {
+	echo 'Not allowed!';
+	exit();
+}
+
 define( 'POST_TYPE', 'bass' );
 
 add_action( 'init', 'custom_post_type' );
 add_filter( 'single_template', 'dev_cpt_single_template' );
+add_filter( 'archive_template', 'dev_cpt_archive_template' );
 
 
 function custom_post_type() {
@@ -85,9 +91,20 @@ function dev_cpt_single_template( $single_template ) {
 	global $pt_name;
 
 	if ( $post->post_type == POST_TYPE ) {
-		$single_template = dirname( __FILE__ ) . '/post-type-template.php';
+		$single_template = dirname( __FILE__ ) . '/pt-tmplt-single.php';
 	}
 
 	return $single_template;
+}
+
+function dev_cpt_archive_template( $archive_template ) {
+	global $post;
+	global $pt_name;
+
+	if ( $post->post_type == POST_TYPE ) {
+		$archive_template = dirname( __FILE__ ) . '/pt-tmplt-archive.php';
+	}
+
+	return $archive_template;
 }
 

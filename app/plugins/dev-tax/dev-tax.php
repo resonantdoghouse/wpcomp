@@ -12,11 +12,9 @@ if ( ! function_exists( 'add_action' ) ) {
 
 add_action( 'init', 'bass_type_taxonomy', 0 );
 
-
 function bass_type_taxonomy() {
 
 	$txt_dom         = 'dev-tax';
-
 	$tax_name        = 'bass-type';
 	$tax_name_single = 'Bass Type';
 	$tax_name_plural = 'Bass Types';
@@ -44,15 +42,22 @@ function bass_type_taxonomy() {
 		'items_list'                 => __( 'Items list', $txt_dom ),
 		'items_list_navigation'      => __( 'Items list navigation', $txt_dom ),
 	);
+
 	$args   = array(
 		'labels'            => $labels,
 		'hierarchical'      => true,
 		'public'            => true,
 		'show_ui'           => true,
+		'query_var'         => true,
 		'show_admin_column' => true,
 		'show_in_nav_menus' => true,
 		'show_tagcloud'     => true,
+		'rewrite'           => array( 'slug' => 'manufacturer' ),
+		'show_in_rest'       => true,
+		'rest_base'          => 'manufacturer',
+		'rest_controller_class' => 'WP_REST_Terms_Controller',
 	);
+
 	register_taxonomy( $tax_name, array( $tax_post_type ), $args );
 
 }

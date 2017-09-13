@@ -1,6 +1,6 @@
 (function ($) {
 
-    var postUrl = 'http://localhost/wpcomp/wp/wp-json/wp/v2/posts/',
+    var postUrl = 'http://localhost/wpcomp/wp/wp-json/wp/v2/basses?_embed',
         postsArray,
         postId,
         currentIndex,
@@ -11,25 +11,46 @@
         $ajaxModalWrapper,
         $prevButton,
         $nextButton,
-        $modalWindow = '<div class="dev-ajax__modal--wrapper">' +
+        $modalWindow = '' +
+
+            // modal container
+            '<div class="dev-ajax__modal--wrapper">' +
+
+            // close modal
             '<button class="dev-ajax__modal--close">Close</button>' +
-            '<div class="dev-ajax__modal--content">' +
-            '<h1 class="dev-ajax__modal--content__title"></h1>' +
-            '</div>' +
+
+            // nav
             '<nav>' +
             '<button class="dev-ajax__modal__button--prev">Prev</button>' +
             '<button class="dev-ajax__modal__button--next">Next</button>' +
             '</nav>' +
-            '</div>';
+
+            // content
+            '<div class="dev-ajax__modal--content">' +
+            '<h1 class="dev-ajax__modal--content__title"></h1>' +
+            '<div class="dev-ajax__modal--content__post"></div>' +
+            '</div>' +
+
+
+            '</div>'; // modal container
 
     /**
-     * Click Open Modal
+     * Click: open Modal & init Ajax request
      */
     $('.dev-ajax-post__link').on('click', function (e) {
         e.preventDefault();
         postId = $(this).attr('id');
         modalPostContent();
     });
+
+    function findIndexByKeyValue(arraytosearch, key, valuetosearch) {
+        for (var i = 0; i < arraytosearch.length; i++) {
+            if (arraytosearch[i][key] === valuetosearch) {
+                return i;
+            }
+        }
+        return null;
+    }
 
     var modalPostContent = function () {
 
@@ -40,58 +61,45 @@
         }).done(function (data) {
 
             postsArray = data;
-
             currentPostId = parseInt(postId);
-
-            function findIndexByKeyValue(arraytosearch, key, valuetosearch) {
-                for (var i = 0; i < arraytosearch.length; i++) {
-                    if (arraytosearch[i][key] === valuetosearch) {
-                        return i;
-                    }
-                }
-                return null;
-            }
-
-            var currentIndex = findIndexByKeyValue(postsArray, "id", currentPostId);
-
+            currentIndex = findIndexByKeyValue(postsArray, "id", currentPostId);
 
             $('html').append($modalWindow).show('slow');
 
             $ajaxModalContent = $('.dev-ajax__modal--content');
             $ajaxModalTitle = $('.dev-ajax__modal--content__title');
-
             $prevButton = $('.dev-ajax__modal__button--prev');
             $nextButton = $('.dev-ajax__modal__button--next');
-
 
             if (currentIndex <= 0) {
                 $prevButton.attr("disabled", true);
             }
 
-            if (currentIndex === ( postsArray.length -1 ) ) {
+            if (currentIndex === ( postsArray.length - 1 )) {
                 $nextButton.attr("disabled", true);
             }
 
-
             $ajaxModalWrapper = $('.dev-ajax__modal--wrapper').hide();
 
-            // $ajaxModalContent.html(postsArray[currentIndex].content.rendered);
-
-            $ajaxModalTitle.html(postsArray[currentIndex].title.rendered);
+            $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).show();
+            $ajaxModalContent.html(postsArray[currentIndex].content.rendered).show();
 
             $ajaxModalWrapper.fadeIn(500);
-
 
             /**
              * Click Events
              */
             $('.dev-ajax__modal--close').on('click', function () {
+
                 $ajaxModalWrapper.fadeOut(250, function () {
                     $('.dev-ajax__modal--wrapper').detach();
                 });
+
             });
 
-
+            /**
+             * Next Button Click
+             */
             $nextButton.on('click', function (e) {
                 e.preventDefault();
 
@@ -99,12 +107,14 @@
                     $nextButton.attr("disabled", true);
                 }
                 else if (currentIndex < (postsArray.length - 1)) {
-                    $nextButton.attr("disabled", false);
-                    $prevButton.attr("disabled", false);
                     nextPostIndex = currentIndex++;
 
-                    // $ajaxModalContent.html(postsArray[currentIndex].content.rendered);
+                    $nextButton.attr("disabled", false);
+                    $prevButton.attr("disabled", false);
+
                     $ajaxModalTitle.html(postsArray[currentIndex].title.rendered);
+                    $ajaxModalContent.html(postsArray[currentIndex].content.rendered);
+
 
                 }
                 else {
@@ -114,28 +124,33 @@
 
             });
 
-
+            /**
+             * Previous Button Click
+             */
             $prevButton.on('click', function (e) {
                 e.preventDefault();
 
-
                 if (currentIndex > 0) {
-                    $prevButton.attr("disabled", false);
-                    $nextButton.attr("disabled", false);
 
                     prevPostIndex = currentIndex--;
 
-                    // $ajaxModalContent.html(postsArray[currentIndex].content.rendered);
-                    $ajaxModalTitle.html(postsArray[currentIndex].title.rendered);
+                    $prevButton.attr("disabled", false);
+                    $nextButton.attr("disabled", false);
+
+                    $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).show();
+                    $ajaxModalContent.html(postsArray[currentIndex].content.rendered).show();
+
                 }
                 else {
                     $prevButton.attr("disabled", true);
                 }
 
-
             });
 
-        }).fail({});
+        }).fail(function () {
+            alert("🌵 Failed to load Google Maps script 🤷 💣💣💣️");
+        });
+
     }
 
 })(jQuery);

@@ -2,7 +2,6 @@
 /**
  * Template File for the url set e.g. /wp/testing/
  */
-
 get_header();
 
 /**
@@ -10,7 +9,7 @@ get_header();
  * https://codex.wordpress.org/Class_Reference/WP_Query
  */
 $args = array(
-	'post_type' => 'post'
+	'post_type' => 'bass'
 );
 
 $the_query = new WP_Query( $args );

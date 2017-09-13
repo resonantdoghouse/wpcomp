@@ -27,12 +27,16 @@
 
             // content
             '<div class="dev-ajax__modal--content">' +
-            '<h1 class="dev-ajax__modal--content__title"></h1>' +
+
+            '<h1 class="dev-ajax__modal--content__title">{{title}}</h1>' +
+
             '<div class="dev-ajax__modal--content__post"></div>' +
+
             '</div>' +
 
 
             '</div>'; // modal container
+    alert('hamboe');
 
     /**
      * Click: open Modal & init Ajax request

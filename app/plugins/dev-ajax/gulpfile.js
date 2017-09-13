@@ -8,8 +8,7 @@ var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var imagemin = require('gulp-imagemin');
 var changed = require('gulp-changed');
-var htmlReaplce = require('gulp-html-replace');
-var htmlMin = require('gulp-htmlmin');
+
 var del = require('del');
 var sequence = require('run-sequence');
 
@@ -20,12 +19,10 @@ var config = {
     cssin: 'src/css/**/*.css',
     jsin: 'src/js/**/*.js',
     imgin: 'src/img/**/*.{jpg,jpeg,png,gif}',
-    htmlin: 'src/*.html',
     scssin: 'src/scss/**/*.scss',
     cssout: 'dist/css/',
     jsout: 'dist/js/',
     imgout: 'dist/img/',
-    htmlout: 'dist/',
     scssout: 'src/css/',
     cssoutname: 'style.css',
     jsoutname: 'script.js',
@@ -39,13 +36,13 @@ gulp.task('reload', function () {
 
 gulp.task('serve', ['sass'], function () {
     browserSync.init({
-        // server: "./app"
-        // server: config.srcurl
         proxy: "http://localhost/wpcomp/wp/testing/"
     });
 
-    gulp.watch([config.htmlin, config.jsin], ['reload']);
     gulp.watch(config.scssin, ['sass']);
+    gulp.watch(config.jsin, ['js']);
+    gulp.watch([config.scssin, config.jsin], ['reload']);
+
 });
 
 gulp.task('sass', function () {
@@ -81,26 +78,12 @@ gulp.task('img', function () {
         .pipe(gulp.dest(config.imgout));
 });
 
-gulp.task('html', function () {
-    return gulp.src(config.htmlin)
-        .pipe(htmlReaplce({
-            'css': config.cssreplaceout,
-            'js': config.jsreplaceout
-        }))
-        .pipe(htmlMin({
-            sortAttributes: true,
-            sortClassName: true,
-            collapseWhitespace: true
-        }))
-        .pipe(gulp.dest(config.dist))
-});
-
 gulp.task('clean', function () {
     return del([config.dist]);
 });
 
 gulp.task('build', function () {
-    sequence('clean', ['html', 'js', 'css', 'img']);
+    sequence('clean', [ 'js', 'css', 'img']);
 });
 
 gulp.task('default', ['serve']);

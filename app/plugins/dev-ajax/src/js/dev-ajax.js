@@ -1,5 +1,14 @@
 (function ($) {
 
+
+    /**
+     * jQuery Plugin
+     * animate fade in
+     */
+    $.fn.animateFade = function() {
+        this.hide().fadeIn('slow');
+    };
+
     var postUrl = 'http://localhost/wpcomp/wp/wp-json/wp/v2/basses?_embed',
         postsArray,
         postId,
@@ -36,7 +45,6 @@
 
 
             '</div>'; // modal container
-    alert('hamboe');
 
     /**
      * Click: open Modal & init Ajax request
@@ -47,6 +55,9 @@
         modalPostContent();
     });
 
+    /**
+     * Find index of array
+     */
     function findIndexByKeyValue(arraytosearch, key, valuetosearch) {
         for (var i = 0; i < arraytosearch.length; i++) {
             if (arraytosearch[i][key] === valuetosearch) {
@@ -85,10 +96,10 @@
 
             $ajaxModalWrapper = $('.dev-ajax__modal--wrapper').hide();
 
-            $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).show();
-            $ajaxModalContent.html(postsArray[currentIndex].content.rendered).show();
+            $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).animateFade();
+            $ajaxModalContent.html(postsArray[currentIndex].content.rendered).animateFade();
 
-            $ajaxModalWrapper.fadeIn(500);
+            $ajaxModalWrapper.fadeIn(600);
 
             /**
              * Click Events
@@ -116,15 +127,13 @@
                     $nextButton.attr("disabled", false);
                     $prevButton.attr("disabled", false);
 
-                    $ajaxModalTitle.html(postsArray[currentIndex].title.rendered);
-                    $ajaxModalContent.html(postsArray[currentIndex].content.rendered);
-
+                    $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).animateFade();
+                    $ajaxModalContent.html(postsArray[currentIndex].content.rendered).animateFade();
 
                 }
                 else {
                     $nextButton.attr("disabled", true);
                 }
-
 
             });
 
@@ -141,8 +150,8 @@
                     $prevButton.attr("disabled", false);
                     $nextButton.attr("disabled", false);
 
-                    $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).show();
-                    $ajaxModalContent.html(postsArray[currentIndex].content.rendered).show();
+                    $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).animateFade();
+                    $ajaxModalContent.html(postsArray[currentIndex].content.rendered).animateFade();
 
                 }
                 else {

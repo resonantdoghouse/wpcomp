@@ -9,19 +9,32 @@ $darkGrey: darken($grey, 50%);
   background: rgba(255, 255, 255, 0.99);
   transition: background-color 0.5s ease;
   position: absolute;
-  top: 0;
+  top: 10%;
   right: 0;
   bottom: 0;
   left: 0;
-  height: 110vh;
+  height: 100vh;
   width: 100vw;
   z-index: 99;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
+  overflow: auto;
 
+  .dev-ajax__modal--content {
+
+    &__title {
+      font-size: 6em;
+      margin: 2em 0 0 0;
+      display: block;
+      color: black;
+    }
+
+    &__image {
+      max-width: 400px;
+    }
+  }
 }
 
 .dev-ajax__modal--close {
@@ -29,6 +42,15 @@ $darkGrey: darken($grey, 50%);
   top: 5%;
   right: 1%;
   z-index: 999;
+}
+
+.dev-ajax__modal__nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
 }
 
 

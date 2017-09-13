@@ -12,7 +12,9 @@
         this.fadeOut('slow');
     };
 
-    var postUrl = 'http://localhost/wpcomp/wp/wp-json/wp/v2/basses?_embed',
+    // http://localhost:3000/wpcomp/wp/wp-json/wp/v2/basses?_embed&manufacturer=10
+
+    var postUrl = 'http://localhost:3000/wpcomp/wp/wp-json/wp/v2/basses?_embed&manufacturer=10',
         postsArray,
         postId,
         currentIndex,
@@ -32,15 +34,15 @@
             '<button class="dev-ajax__modal--close">Close</button>' +
 
             // nav
-            '<nav>' +
+            '<nav class="dev-ajax__modal__nav">' +
             '<button class="dev-ajax__modal__button--prev">Prev</button>' +
             '<button class="dev-ajax__modal__button--next">Next</button>' +
             '</nav>' +
 
             // content
             '<div class="dev-ajax__modal--content">' +
-            '<img class="dev-ajax__modal--content__image" src="">' +
             '<h1 class="dev-ajax__modal--content__title">{{title}}</h1>' +
+            '<img class="dev-ajax__modal--content__image" src="">' +
             '<div class="dev-ajax__modal--content__post"></div>' +
             '</div>' +
 
@@ -131,6 +133,7 @@
 
                     $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).animateFadeIn();
                     $ajaxModalContent.html(postsArray[currentIndex].content.rendered).animateFadeIn();
+                    $ajaxModalImage.attr('src', postsArray[currentIndex].better_featured_image.source_url).animateFadeIn();
 
                 }
                 else if (currentIndex < (postsArray.length - 1)) {

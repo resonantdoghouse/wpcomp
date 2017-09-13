@@ -9,15 +9,22 @@ get_header();
  * https://codex.wordpress.org/Class_Reference/WP_Query
  */
 $args = array(
-	'post_type' => 'bass'
+	'post_type' => 'bass',
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'bass-type',
+			'field'    => 'slug',
+			'terms'    => 'fender',
+		),
+	),
 );
 
 $the_query = new WP_Query( $args );
 
 if ( $the_query->have_posts() ) : ?>
 
-    <h2><?= __( 'Posts', 'dev-ajax' ); ?></h2>
-    <ul>
+<h2><?= __( 'Posts', 'dev-ajax' ); ?></h2>
+<ul>
 
 	<?php while ( $the_query->have_posts() ) :
 		$the_query->the_post();
@@ -37,7 +44,7 @@ if ( $the_query->have_posts() ) : ?>
 
 	wp_reset_postdata();
 
-endif;
+	endif;
 
-get_footer();
-?>
+	get_footer();
+	?>

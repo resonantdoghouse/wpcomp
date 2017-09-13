@@ -5,14 +5,6 @@
 
 get_header();
 
-?>
-
-    <section id="dev-ajax-loader">
-
-
-    </section>
-
-<?
 /**
  * WP_Query
  * https://codex.wordpress.org/Class_Reference/WP_Query
@@ -30,10 +22,11 @@ if ( $the_query->have_posts() ) : ?>
 
 	<?php while ( $the_query->have_posts() ) :
 		$the_query->the_post();
+
 		?>
 
         <li>
-            <a class="ajax-post__link" href="<?= get_the_permalink(); ?>" id="<?= get_the_ID(); ?>">
+            <a class="dev-ajax-post__link" href="<?= get_the_permalink(); ?>" id="<?= get_the_ID(); ?>">
 				<?= get_the_title(); ?>
 
             </a>
@@ -48,3 +41,4 @@ if ( $the_query->have_posts() ) : ?>
 endif;
 
 get_footer();
+?>

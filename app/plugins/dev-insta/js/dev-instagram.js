@@ -12,8 +12,6 @@
 
     var createCarousel = function () {
 
-        console.log('works');
-
         $('.owl-carousel').owlCarousel({
             stagePadding: 10,
             loop: true,

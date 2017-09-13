@@ -1,12 +1,15 @@
 (function ($) {
 
-
     /**
      * jQuery Plugin
      * animate fade in
      */
-    $.fn.animateFade = function() {
+    $.fn.animateFadeIn = function () {
         this.hide().fadeIn('slow');
+    };
+
+    $.fn.animateFadeOut = function () {
+        this.fadeOut('slow');
     };
 
     var postUrl = 'http://localhost/wpcomp/wp/wp-json/wp/v2/basses?_embed',
@@ -17,11 +20,11 @@
         prevPostIndex,
         $ajaxModalContent,
         $ajaxModalTitle,
+        $ajaxModalImage,
         $ajaxModalWrapper,
         $prevButton,
         $nextButton,
         $modalWindow = '' +
-
             // modal container
             '<div class="dev-ajax__modal--wrapper">' +
 
@@ -36,13 +39,10 @@
 
             // content
             '<div class="dev-ajax__modal--content">' +
-
+            '<img class="dev-ajax__modal--content__image" src="">' +
             '<h1 class="dev-ajax__modal--content__title">{{title}}</h1>' +
-
             '<div class="dev-ajax__modal--content__post"></div>' +
-
             '</div>' +
-
 
             '</div>'; // modal container
 
@@ -76,12 +76,13 @@
         }).done(function (data) {
 
             postsArray = data;
+
             currentPostId = parseInt(postId);
             currentIndex = findIndexByKeyValue(postsArray, "id", currentPostId);
 
             $('html').append($modalWindow).show('slow');
 
-            $ajaxModalContent = $('.dev-ajax__modal--content');
+            $ajaxModalContent = $('.dev-ajax__modal--content__post');
             $ajaxModalTitle = $('.dev-ajax__modal--content__title');
             $prevButton = $('.dev-ajax__modal__button--prev');
             $nextButton = $('.dev-ajax__modal__button--next');
@@ -95,14 +96,17 @@
             }
 
             $ajaxModalWrapper = $('.dev-ajax__modal--wrapper').hide();
+            $ajaxModalImage = $('.dev-ajax__modal--content__image');
 
-            $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).animateFade();
-            $ajaxModalContent.html(postsArray[currentIndex].content.rendered).animateFade();
+
+            $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).animateFadeIn();
+            $ajaxModalContent.html(postsArray[currentIndex].content.rendered).animateFadeIn();
+            $ajaxModalImage.attr('src', postsArray[currentIndex].better_featured_image.source_url);
 
             $ajaxModalWrapper.fadeIn(600);
 
             /**
-             * Click Events
+             * Close Modal
              */
             $('.dev-ajax__modal--close').on('click', function () {
 
@@ -118,17 +122,20 @@
             $nextButton.on('click', function (e) {
                 e.preventDefault();
 
-                if (currentIndex === (postsArray.length - 1)) {
-                    $nextButton.attr("disabled", true);
-                }
-                else if (currentIndex < (postsArray.length - 1)) {
+                if (currentIndex !== (postsArray.length - 1)) {
+
                     nextPostIndex = currentIndex++;
 
                     $nextButton.attr("disabled", false);
                     $prevButton.attr("disabled", false);
 
-                    $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).animateFade();
-                    $ajaxModalContent.html(postsArray[currentIndex].content.rendered).animateFade();
+                    $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).animateFadeIn();
+                    $ajaxModalContent.html(postsArray[currentIndex].content.rendered).animateFadeIn();
+
+                }
+                else if (currentIndex < (postsArray.length - 1)) {
+
+                    $nextButton.attr("disabled", true);
 
                 }
                 else {
@@ -150,12 +157,13 @@
                     $prevButton.attr("disabled", false);
                     $nextButton.attr("disabled", false);
 
-                    $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).animateFade();
-                    $ajaxModalContent.html(postsArray[currentIndex].content.rendered).animateFade();
+                    $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).animateFadeIn();
+                    $ajaxModalContent.html(postsArray[currentIndex].content.rendered).animateFadeIn();
 
                 }
                 else {
                     $prevButton.attr("disabled", true);
+                    $prevButton.animateFadeOut();
                 }
 
             });

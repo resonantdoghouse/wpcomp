@@ -14,7 +14,7 @@
 
     // http://localhost:3000/wpcomp/wp/wp-json/wp/v2/basses?_embed&manufacturer=10
 
-    var postUrl = 'http://localhost:3000/wpcomp/wp/wp-json/wp/v2/basses?_embed&manufacturer=10',
+    var postUrl = 'http://localhost/wpcomp/wp/wp-json/wp/v2/basses?_embed&manufacturer=10',
         postsArray,
         postId,
         currentIndex,
@@ -162,11 +162,11 @@
 
                     $ajaxModalTitle.html(postsArray[currentIndex].title.rendered).animateFadeIn();
                     $ajaxModalContent.html(postsArray[currentIndex].content.rendered).animateFadeIn();
+                    $ajaxModalImage.attr('src', postsArray[currentIndex].better_featured_image.source_url).animateFadeIn();
 
                 }
                 else {
                     $prevButton.attr("disabled", true);
-                    $prevButton.animateFadeOut();
                 }
 
             });

@@ -3,8 +3,6 @@ config/app.php
 .DS_Store
 vendor
 wp
-
-
 node_modules/
 app/plugins/*
 !app/plugins/dev-*

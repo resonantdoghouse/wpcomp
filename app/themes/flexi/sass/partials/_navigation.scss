@@ -11,20 +11,21 @@
         }
         .menu-item {
             flex-grow: 1;
-            a {
-                background: $lightest;
-                color: $darkest;
-                padding: $padding;
-                transition: color .5s, background-color .2s;
-                &:visited {
-                    background: $lightest;
-                    color: $darkest;
-                }
-                &:hover,
-                &:focus {
-                    background: lighten($darkest, 20%);
+            @extend %border-anim;
+            transition: background-color .2s ease-in-out, color .2s ease-in-out;
+            &:hover {
+                background: $darkest;
+                color: $lightest;
+                a {
                     color: $lightest;
                 }
+            }
+            a {
+                transition: color .3s ease-in-out;
+                padding: $padding;
+                &:visited {}
+                &:hover,
+                &:focus {}
             }
         }
     }

@@ -1,0 +1,19 @@
+%border-anim {
+    background: rgba($lightest, 10%);
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
+    display: block;
+   &::before, &::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 5px;
+        background: skyblue;
+        transition: width 1s ease-in-out;
+    }
+    &:hover::before, &:hover::after {
+        width: 100%;
+        background: coral;
+        transition: width .6s ease-in-out;
+    }
+}

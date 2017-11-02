@@ -1,0 +1,16 @@
+%no-pad-marg {
+    padding: 0;
+    margin: 0;
+}
+
+@mixin small {
+    @media (min-width: $small-width) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media (min-width: $medium-width) {
+        @content;
+    }
+}

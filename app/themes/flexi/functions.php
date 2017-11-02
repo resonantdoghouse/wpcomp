@@ -117,6 +117,8 @@ add_action( 'widgets_init', 'flexi_widgets_init' );
  * Enqueue scripts and styles.
  */
 function flexi_scripts() {
+
+	wp_enqueue_style( 'flexi-fonts', 'https://fonts.googleapis.com/css?family=Istok+Web:400,700|Lora' );
 	wp_enqueue_style( 'flexi-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'flexi-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );

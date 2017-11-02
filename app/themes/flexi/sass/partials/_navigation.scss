@@ -1,0 +1,31 @@
+.main-navigation {
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+        text-align: center;
+        width: 100%;
+        @include small {
+            flex-flow: row wrap;
+        }
+        .menu-item {
+            flex-grow: 1;
+            a {
+                background: $lightest;
+                color: $darkest;
+                padding: $padding;
+                transition: color .5s, background-color .2s;
+                &:visited {
+                    background: $lightest;
+                    color: $darkest;
+                }
+                &:hover,
+                &:focus {
+                    background: lighten($darkest, 20%);
+                    color: $lightest;
+                }
+            }
+        }
+    }
+}

@@ -10,4 +10,5 @@ app/themes/*
 app/uploads/*
 !app/themes/minim
 !app/themes/atom
+!app/themes/flexi
 .idea/*

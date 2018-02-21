@@ -3,7 +3,7 @@
 /**
  * The header for our theme.
  *
- * @package RED_Starter_Theme
+ * @package RedStar_Theme
  */
 
 ?><!DOCTYPE html>

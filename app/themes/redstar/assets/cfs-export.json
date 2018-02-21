@@ -1,0 +1,61 @@
+[
+  {
+    "post_title": "About",
+    "post_name": "about",
+    "cfs_extras": {
+      "order": "0",
+      "context": "normal",
+      "hide_editor": "1"
+    },
+    "cfs_fields": [
+      {
+        "id": 3,
+        "name": "about_header_image",
+        "label": "Header Image",
+        "type": "file",
+        "notes": "",
+        "parent_id": 0,
+        "weight": 0,
+        "options": {
+          "file_type": "image",
+          "return_value": "url",
+          "required": "0"
+        }
+      },
+      {
+        "id": "1",
+        "name": "about_our_story",
+        "label": "Our Story",
+        "type": "wysiwyg",
+        "notes": "",
+        "parent_id": 0,
+        "weight": 1,
+        "options": {
+          "formatting": "default",
+          "required": "0"
+        }
+      },
+      {
+        "id": "2",
+        "name": "about_our_team",
+        "label": "Our Team",
+        "type": "wysiwyg",
+        "notes": "",
+        "parent_id": 0,
+        "weight": 2,
+        "options": {
+          "formatting": "default",
+          "required": "0"
+        }
+      }
+    ],
+    "cfs_rules": {
+      "page_templates": {
+        "operator": "==",
+        "values": [
+          "page-templates\/about.php"
+        ]
+      }
+    }
+  }
+]

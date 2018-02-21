@@ -2,7 +2,7 @@
 /**
  * The Front Page (aka the static homepage for the site).
  *
- * @package Inhabitent_Theme
+ * @package RedStar_Theme
  */
 
 get_header(); ?>
@@ -12,7 +12,7 @@ get_header(); ?>
 
             <section class="home-hero">
                 <img src="<?php echo get_template_directory_uri() . '/images/redstar-logo-full.svg' ?>" class="logo"
-                     alt="Inhabitent full logo"/>
+                     alt="RedStar full logo"/>
             </section>
 
             <section class="product-info container">
@@ -45,7 +45,7 @@ get_header(); ?>
 					$news_posts = redstar_get_latest_posts( 'post', 3 );
 					if ( ! empty( $news_posts ) ) :
 						?>
-                        <h2>Inhabitent Journal</h2>
+                        <h2>RedStar Journal</h2>
                         <ul>
 							<?php foreach ( $news_posts as $post ) : setup_postdata( $post ); ?>
                                 <li>

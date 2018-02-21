@@ -22,6 +22,20 @@ function redstar_body_classes( $classes ) {
 add_filter( 'body_class', 'redstar_body_classes' );
 
 
+/**
+ * Customize the Product archive title.
+ */
+function redstar_archive_title( $title ) {
+	if ( is_post_type_archive( 'product' ) ) {
+		$title = 'Shop Stuff';
+	} elseif ( is_tax( 'product-type' ) ) {
+		$title = sprintf( '%1$s', single_term_title( '', false ) );
+	}
+	return $title;
+}
+add_filter( 'get_the_archive_title', 'redstar_archive_title' );
+
+
 
 
 

@@ -190,3 +190,21 @@
  		echo '</nav>';
  	}
  }
+
+
+/**
+ * Get an array of the latest posts by post type.
+ *
+ * @param  string $post_type The post type slug.
+ * @param  int    $num_posts The number of posts to show.
+ * @return array             List of post objects.
+ */
+function redstar_get_latest_posts( $post_type, $num_posts ) {
+	$args         = array(
+		'post_type'   => $post_type,
+		'numberposts' => $num_posts
+	);
+	$latest_posts = get_posts( $args );
+
+	return $latest_posts;
+}

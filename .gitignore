@@ -7,6 +7,7 @@ node_modules/
 app/plugins/*
 !app/plugins/dev-*
 !app/plugins/redstar-func
+!app/plugins/red-widget
 app/themes/*
 app/uploads/*
 !app/themes/minim

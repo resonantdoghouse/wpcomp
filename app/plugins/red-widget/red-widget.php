@@ -144,7 +144,7 @@ class Widget_Name extends WP_Widget {
 		$instance = wp_parse_args(
 			(array) $instance,
 			array(
-				'title' => 'My Widget Title',
+				'title' => 'Red Widget',
 			)
 		);
 

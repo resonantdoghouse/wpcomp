@@ -6,7 +6,7 @@ wp
 node_modules/
 app/plugins/*
 !app/plugins/dev-*
-!app/plugins/redstar-*
+!app/plugins/redstar-func
 app/themes/*
 app/uploads/*
 !app/themes/minim

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: OOP Doggo
+ * Template Name: OOP
  */
 
 class Dog {
@@ -45,3 +45,28 @@ d($dog_1);
 //$dog_2->colour = 'grey';
 //echo $dog_2->walk();
 //d($dog_2->bark());
+
+
+
+//class Warrior {
+//	public $name;
+//
+//	public $secret = 'Scared of mice';
+//
+//	public function __construct($warrior_name) {
+//		$this->name = $warrior_name;
+//	}
+//
+//	public function melee() {
+//		return 'Smash, smash, smash';
+//	}
+//
+//	public function show_secret(){
+//		return $this->secret;
+//	}
+//
+//}
+//
+//$hammaurai = new Warrior('hammaurai');
+//echo $hammaurai->name;
+//echo $hammaurai->secret;

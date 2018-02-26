@@ -21,7 +21,9 @@ get_header(); ?>
 			?>
 
             <button type="button" id="close-comments">
-                <?php echo $comment_status = (comments_open() ?  'Close Comments' : 'Open Comments'); ?>
+                <?php 
+                    echo $comment_status = (comments_open() ?  'Close Comments' : 'Open Comments'); 
+                ?>
             </button>
 
             <?php

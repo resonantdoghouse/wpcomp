@@ -1,16 +1,21 @@
 (function ($) {
 
-    // console.log(redsprout_vars.comments_open);
+    var commentStatus;
+    if (redsprout_vars.comments_open) {
+        commentStatus = 'open';
+    } else {
+        commentStatus = 'closed';
+    }
 
     $('#close-comments').on('click', function (e) {
         e.preventDefault();
 
-        var commentStatus;
-
-        if(redsprout_vars.comments_open){
-            commentStatus = 'closed';
-        } else {
+        if (commentStatus === 'closed') {
+            $('#close-comments').text('Close Comments');
             commentStatus = 'open';
+        } else if (commentStatus === 'open') {
+            $('#close-comments').text('Open Comments');
+            commentStatus = 'closed';
         }
 
         $.ajax({
@@ -23,9 +28,8 @@
                 xhr.setRequestHeader('X-WP-Nonce', redsprout_vars.wpapi_nonce);
             }
         }).done(function (response) {
-
-            $('#close-comments').after('Success! Comments are ' + commentStatus + ' for this post.');
-
+            $('.comment-status').empty();
+            $('#close-comments').after('<p class="comment-status">Comments are now ' + commentStatus + ' for this post.</p>');
         });
     });
 

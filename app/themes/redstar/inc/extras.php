@@ -22,6 +22,11 @@ function redstar_body_classes( $classes ) {
 add_filter( 'body_class', 'redstar_body_classes' );
 
 
+
+
+
+
+
 /**
  * Customize the Product archive title.
  */
@@ -39,6 +44,19 @@ add_filter( 'get_the_archive_title', 'redstar_archive_title' );
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * Make hero image customizable through CFS field or featured image.
  */
@@ -47,10 +65,11 @@ function redstar_dynamic_css() {
 		return;
 	}
 
-	$image = CFS()->get( 'about_header_image' );
+  $image = CFS()->get( 'about_header_image' );
 	if ( ! $image ) {
 		return;
-	}
+  }
+  
 	$hero_css = ".page-template-about .entry-header {
 		background:
 			linear-gradient( to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 100% ),

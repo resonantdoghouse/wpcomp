@@ -15,6 +15,8 @@ get_header(); ?>
                      alt="RedStar full logo"/>
             </section>
 
+
+            <!-- Product terms -->
             <section class="product-info container">
                 <h2>Shop Stuff</h2>
 				<?php
@@ -22,44 +24,65 @@ get_header(); ?>
 					'taxonomy'   => 'product-type',
 					'hide_empty' => 0,
 				) );
-				if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) :
+
+				if ( ! empty( $terms ) ) :
 					?>
                     <div class="product-type-blocks">
 						<?php foreach ( $terms as $term ) :
-                            ?>
+							?>
                             <div class="product-type-block-wrapper">
                                 <img src="<?php echo get_template_directory_uri() . '/images/' . $term->slug; ?>.svg"
                                      alt="<?php echo $term->name; ?>"/>
                                 <p><?php echo $term->description; ?></p>
-                                <p><a href="<?php echo get_term_link( $term ); ?>"
-                                      class="btn"><?php echo $term->name; ?> Stuff</a></p>
+                                <p>
+                                    <a href="<?php echo get_term_link( $term ); ?>"
+                                       class="btn"><?php echo $term->name; ?> Stuff</a>
+                                </p>
                             </div>
 						<?php endforeach; ?>
                     </div>
 				<?php endif; ?>
             </section>
 
+
+            <!-- Journal Posts -->
             <section class="latest-entries">
                 <div class="container">
 					<?php
-					$news_posts = redstar_get_latest_posts( 'post', 3 );
-					if ( ! empty( $news_posts ) ) :
+					$args    = array(
+						'post_type'   => 'post',
+						'numberposts' => 3
+					);
+					$journal = get_posts( $args );
+
+					if ( ! empty( $journal ) ) :
 						?>
                         <h2>RedStar Journal</h2>
                         <ul>
-							<?php foreach ( $news_posts as $post ) : setup_postdata( $post ); ?>
+							<?php foreach ( $journal as $post ) : setup_postdata( $post ); ?>
                                 <li>
-									<?php if ( has_post_thumbnail() ) : ?>
+									<?php
+									if ( has_post_thumbnail() ) : ?>
                                         <div class="thumbnail-wrapper">
 											<?php the_post_thumbnail( 'large' ); ?>
                                         </div>
 									<?php endif; ?>
+
                                     <div class="post-info-wrapper">
                                         <span class="entry-meta"><?php redstar_posted_on(); ?>
-                                            / <?php comments_number( '0 Comments', '1 Comment', '% Comments' ); ?></span>
+                                            / <?php comments_number( '0 Comments', '1 Comment', '% Comments' ); ?>
+                                        </span>
+
 										<?php the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
+
                                     </div>
-                                    <a class="black-btn" href="<?php the_permalink(); ?>">Read Entry</a>
+
+
+                                    <a class="black-btn" href="<?php the_permalink(); ?>">
+                                        Read Entry
+                                    </a>
+
+
                                 </li>
 							<?php endforeach;
 							wp_reset_postdata(); ?>
@@ -67,6 +90,7 @@ get_header(); ?>
 					<?php endif; ?>
                 </div>
             </section>
+
 
         </main><!-- #main -->
     </div><!-- #primary -->

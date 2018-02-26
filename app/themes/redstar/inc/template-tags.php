@@ -192,6 +192,11 @@
  }
 
 
+
+
+
+ // removed from front-page to avoid confusion
+
 /**
  * Get an array of the latest posts by post type.
  *

@@ -20,7 +20,9 @@ get_header(); ?>
 
 			?>
 
-            <button type="button" id="close-comments"><? echo comments_open() ?  'Close Comments' : 'Open Comments'; ?></button>
+            <button type="button" id="close-comments">
+                <?php echo $comment_status = (comments_open() ?  'Close Comments' : 'Open Comments'); ?>
+            </button>
 
             <?php
 			// If comments are open or we have at least one comment, load up the comment template.

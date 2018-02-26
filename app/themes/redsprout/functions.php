@@ -11,8 +11,10 @@ add_action('rest_api_init', 'redsprout_register_endpoints');
  */
 function redsprout_enqueue_scripts()
 {
+    // styles
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
-    wp_enqueue_style('custom-style', get_stylesheet_directory_uri() . '/css/custom.css');
+    wp_enqueue_style('custom-style', get_stylesheet_directory_uri() . '/css/custom.css'); 
+    // scripts
     wp_enqueue_script('jquery');
     wp_enqueue_script('redsprout', get_stylesheet_directory_uri() . '/js/redsprout.js', array('jquery'), false, true);
 
@@ -22,7 +24,6 @@ function redsprout_enqueue_scripts()
         'post_id' => get_the_ID(),
         'comments_open' => comments_open(get_the_ID())
     ));
-
 }
 
 /**
@@ -52,10 +53,4 @@ function redsprout_add_vote(WP_REST_Request $request)
         return new WP_Error('vote_error', __('Unable to add vote', 'redsprout'), $request->get_param('id'));
     }
     return $votes + 1;
-
 }
-
-
-
-
-

@@ -24,7 +24,7 @@
             }
         }).done(function (response) {
 
-            alert('Success! Comments are ' + commentStatus + ' for this post.');
+            $('#close-comments').after('Success! Comments are ' + commentStatus + ' for this post.');
 
         });
     });

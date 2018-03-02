@@ -18,12 +18,14 @@ get_header(); ?>
 			// Include the single post content template.
 			get_template_part( 'template-parts/content', 'single' );
 
+			$text = get_post_meta( get_the_ID(), '_redsprout_text', true );
+			// Echo the metadata
+			echo esc_html( $text );
+
 			?>
 
             <button type="button" id="close-comments">
-                <?php 
-                    echo $comment_status = (comments_open() ?  'Close Comments' : 'Open Comments'); 
-                ?>
+                <?php echo $comment_status = (comments_open() ?  'Close Comments' : 'Open Comments'); ?>
             </button>
 
             <?php
@@ -52,7 +54,20 @@ get_header(); ?>
 
 			// End of the loop.
 		endwhile;
+
+
+
+
+
+
+
+
+
 		?>
+
+
+
+
 
 	</main><!-- .site-main -->
 

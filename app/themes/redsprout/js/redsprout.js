@@ -1,5 +1,9 @@
 (function ($) {
 
+
+    /**
+     * Close Comments
+     */
     var commentStatus;
     if (redsprout_vars.comments_open) {
         commentStatus = 'open';
@@ -32,5 +36,11 @@
             $('#close-comments').after('<p class="comment-status">Comments are now ' + commentStatus + ' for this post.</p>');
         });
     });
+
+
+    /**
+     * Post Content
+     */
+
 
 })(jQuery);

@@ -2,7 +2,7 @@ cache/*
 config/app.php
 .DS_Store
 vendor
-wp
+wp/*
 !/wp/.htaccess
 node_modules/
 app/plugins/*

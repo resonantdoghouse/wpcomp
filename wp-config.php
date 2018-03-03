@@ -64,6 +64,11 @@ define( 'SECURE_AUTH_SALT', 'BgC;T+<4qZS1VNM:(.s/dX5}xCHSc0:e0VCM0;DJm#/.._fu/?^
 define( 'LOGGED_IN_SALT', '6-HDCi^- i)X}FY-fRI$S-^(pyJ]DOWFM+^%5?*.6Dhx|wo~w|T~_KSFN4<${lpD' );
 define( 'NONCE_SALT', 'L6`F2BOD)53j`)}n;L%K{ll*Iw@Vx:mgcMS0&`E#W15L/b($~[qV}WkdJ^sr{z+|' );
 
+
+// Replace JWT_AUTH_SECRET_KEY with SECURE_AUTH_KEY generated @ https://api.wordpress.org/secret-key/1.1/salt/
+define('JWT_AUTH_SECRET_KEY', 'YeS_8m-_6]b UN[T6E]syz_-w5KY;g/1u:Q5+Ki>Jt)B;QoIcJ9AYbyVR;^ohL4m');
+define('JWT_AUTH_CORS_ENABLE', true);
+
 /**#@-*/
 
 /**

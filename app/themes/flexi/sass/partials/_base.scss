@@ -22,3 +22,20 @@ ul {
     @extend %no-pad-marg;
     list-style: none;
 }
+
+button, input[type=button], input[type=reset], input[type=submit] {
+    background: $darkest;
+    color: $lightest;
+    border-color: $darkest;
+    border: 1px solid;
+    border-radius: 0;
+    font-size: 1rem;
+    line-height: 1rem;
+    padding: .5rem 1rem;
+    transition: 0.3s;
+    &:hover,
+    &:focus {
+        background: $lightest;
+        color: $darkest;
+    }
+}

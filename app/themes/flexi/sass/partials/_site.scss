@@ -1,42 +1,43 @@
 .site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  &-header {
+    padding: $padding;
+    background: darken($lightest, 5%);
+  }
+  &-content {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    &-header {
-        padding: $padding;
-        background: darken($lightest, 5%);
+    @include small {
+      flex-flow: row nowrap;
     }
-    &-content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        @include small {
-            flex-flow: row nowrap;
-        }
-        .content-area {
-            padding: $padding;
-            flex: 1 1 70%;
-            @include medium {
-                flex-basis: 80%;
-            }
-        }
-        .widget-area {
-            background: darken($lightest, 20%);
-            padding: $padding;
-            flex: 1 1 30%;
-            display: flex;
-            flex-direction: column;
-            @include medium {
-                flex-basis: 20%;
-            }
-        }
+    // min-width: $small-width
+    .content-area {
+      padding: $padding;
+      flex: 1 1 70%;
+      @include medium {
+        flex-basis: 80%;
+      }
     }
-    &-footer {
-        padding: $padding;
-        background: darken($lightest, 80%);
-        color: $lightest;
-        a {
-            color: darken($lightest, 2%);
-        }
+    .widget-area {
+      background: darken($lightest, 20%);
+      padding: $padding;
+      flex: 1 1 30%;
+      display: flex;
+      flex-direction: column;
+      @include medium {
+        flex-basis: 20%;
+      }
     }
+  }
+  &-footer {
+    padding: $padding;
+    background: darken($lightest, 80%);
+    color: $lightest;
+    a {
+      color: darken($lightest, 2%);
+    }
+  }
 }

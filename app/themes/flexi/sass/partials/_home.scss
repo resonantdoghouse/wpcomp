@@ -1,17 +1,11 @@
 .home {
-    .site {
-        height: 100vh;
-        width: 100vw;
+  .site {
+    min-height: 100vh;
+    width: 100%;
+    &-header {
+      @include small {
 
-        &-header {
-
-            @include small {
-
-                position: fixed;
-                width: 100vw;
-                bottom: 0;
-
-            }
-        }
-    }
-}
+      }// min-width: $small-width
+    }// .site-header
+  }// .site
+}// .home

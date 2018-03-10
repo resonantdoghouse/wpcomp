@@ -1,19 +1,21 @@
 %border-anim {
-    background: rgba($lightest, 10%);
-    border-top: 5px solid white;
-    border-bottom: 5px solid white;
+  background: rgba($lightest, 10%);
+  border-top: 5px solid $lightest;
+  border-bottom: 5px solid $lightest;
+  display: block;
+  //&::before,
+  &::after {
+    content: '';
     display: block;
-   &::before, &::after {
-        content: '';
-        display: block;
-        width: 0;
-        height: 5px;
-        background: skyblue;
-        transition: width 1s ease-in-out;
-    }
-    &:hover::before, &:hover::after {
-        width: 100%;
-        background: coral;
-        transition: width .6s ease-in-out;
-    }
+    width: 0;
+    height: 2px;
+    background: $darkest;
+    transition: width .5s ease-in-out;
+  }
+  //&:hover::before,
+  &:hover::after {
+    width: 100%;
+    background: $lightest;
+    transition: width .3s ease-in-out;
+  }
 }

@@ -1,8 +1,8 @@
 ## Composer & WordPress
 
-Testing out composer with WordPress as a dependency.
+Development setup using Composer to add WordPress as a dependency.
 
-Various 'dev' plugins and testing themes.
+In the app folder there are themes and plugins for testing, some maybe some interesting solutions to common WP puzzles.
 
 ### Intsall
 
@@ -18,3 +18,4 @@ You will need to **update wp-config.php**
 & add a database.
 
 **wp-content** has been 'moved' plugins & themes are now in the 'app' folder.
+

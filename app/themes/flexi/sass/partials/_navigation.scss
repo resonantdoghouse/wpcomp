@@ -1,32 +1,72 @@
 .main-navigation {
-    .nav-menu {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: stretch;
-        text-align: center;
-        width: 100%;
-        @include small {
-            flex-flow: row wrap;
-        }
-        .menu-item {
-            flex-grow: 1;
-            @extend %border-anim;
-            transition: background-color .2s ease-in-out, color .2s ease-in-out;
-            &:hover {
-                background: $darkest;
-                color: $lightest;
-                a {
-                    color: $lightest;
-                }
-            }
-            a {
-                transition: color .3s ease-in-out;
-                padding: $padding;
-                &:visited {}
-                &:hover,
-                &:focus {}
-            }
-        }
+
+  .menu-toggle {
+    background: $darkest;
+    color: $lightest;
+    border: 1px solid $darkest;
+    transition: background-color .3s, color .5s;
+    &:hover,
+    &:focus {
+      background: $lightest;
+      color: $darkest;
+      border: 1px solid $darkest;
     }
+  }
+  // .menu-toggle
+
+  /**
+   * Main Navigation
+   */
+  .menu-navigation-container {
+
+  }
+  // .menu-navigation-container
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    text-align: center;
+    width: 100%;
+    @include small {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    // min-width: $small-width
+    .menu-item {
+      @extend %border-anim;
+      transition: background-color .2s ease-in-out, color .2s ease-in-out;
+      &:hover {
+        background: $darkest;
+        color: $lightest;
+        a {
+          color: $lightest;
+        }
+      }
+      a {
+        transition: color .3s ease-in-out;
+        padding: $padding;
+        &:visited {
+        }
+        &:hover,
+        &:focus {
+        }
+      }
+    }
+    // .menu-item
+  }
+  // .primary-menu.nav-menu
+
+  &.toggled {
+    .nav-menu {
+      //display: none;
+      display: flex;
+    }
+  }
+  // .toggled
 }
+
+// .main-navigation

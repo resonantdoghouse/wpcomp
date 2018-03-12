@@ -64,6 +64,7 @@ define( 'SECURE_AUTH_SALT', 'BgC;T+<4qZS1VNM:(.s/dX5}xCHSc0:e0VCM0;DJm#/.._fu/?^
 define( 'LOGGED_IN_SALT', '6-HDCi^- i)X}FY-fRI$S-^(pyJ]DOWFM+^%5?*.6Dhx|wo~w|T~_KSFN4<${lpD' );
 define( 'NONCE_SALT', 'L6`F2BOD)53j`)}n;L%K{ll*Iw@Vx:mgcMS0&`E#W15L/b($~[qV}WkdJ^sr{z+|' );
 
+define('JWT_AUTH_SECRET_KEY', 'imqU-o]z3D+N{Y~98S$ ^~1)xM(@2Bh{Ni0>O7{@c{DaVGIbz2+T[0.$NL dCA|7');define('JWT_AUTH_CORS_ENABLE', true);
 /**#@-*/
 
 /**

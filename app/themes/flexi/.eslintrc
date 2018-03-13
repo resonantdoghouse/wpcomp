@@ -19,7 +19,8 @@
         "jQuery": false,
         "$": false,
         "_": false,
-        "flexi_vars": false
+        "flexi_vars": false,
+        "tb_show": false
     },
     "env": {
         "browser": true

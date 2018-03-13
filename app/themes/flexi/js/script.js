@@ -17,25 +17,45 @@
         $.ajax(settings).done(function (data) {
 
             var events = data.events;
-            // console.log(events);
 
             $.each(events, function (index, event) {
                 var postDate = event.start.local.split("T")[0];
+                var imgUrl = '';
+                var evtDesc = '';
+
+                if (event.logo !== null){
+                    imgUrl = event.logo.original.url;
+                }
+
+                if(event.description !== null){
+                    evtDesc = event.description.text;
+                }
+
                 eventsArray.push({
                     title: event.name.text,
                     start: postDate,
-                    description: event.description.text,
-                    url: event.url
+                    description: evtDesc,
+                    url: event.url,
+                    imageurl: imgUrl
                 });
-                // console.log(postDate);
             });
-            // console.log(eventsArray);
+
             $('#calendar').fullCalendar({
                 defaultView: 'month',
                 events: eventsArray,
                 eventClick: function(event) {
                     if (event.url) {
-                        window.open(event.url);
+                        // window.open(event.url);
+                        console.log(event);
+
+                        var tbContent = '';
+                            tbContent += event.description;
+
+                        var tbUrl = "#TB_inline?&width=400&height=300";
+                        tb_show(event.title, tbUrl);
+
+                        $('#TB_ajaxContent').html(tbContent);
+
                         return false;
                     }
                 },
@@ -44,7 +64,9 @@
                 },
                 windowResizeDelay: 1000
             });
+
         });
+
 
         var calendarResize = function(){
             var vWidth = window.innerWidth;
@@ -55,8 +77,16 @@
             }
         }
 
-    }// if ($('#calendar').length
+        $('#filter-calendar').on('change', function(){
+            if($(this).val() === 'month-view'){
+                $('#calendar').fullCalendar('changeView', 'month');
+            }
+            else if($(this).val() === 'agenda-day') {
+                $('#calendar').fullCalendar('changeView', 'agendaDay');
+            }
+        });
 
+    }// if ($('#calendar').length
 
 
     /**

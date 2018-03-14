@@ -44,12 +44,14 @@
                 defaultView: 'month',
                 events: eventsArray,
                 eventClick: function(event) {
+
                     if (event.url) {
                         // window.open(event.url);
                         console.log(event);
 
                         var tbContent = '';
                             tbContent += event.description;
+                            tbContent += '<img src="' + event.imageurl + '"/>';
 
                         var tbUrl = "#TB_inline?&width=400&height=300";
                         tb_show(event.title, tbUrl);
@@ -58,7 +60,9 @@
 
                         return false;
                     }
+
                 },
+
                 windowResize: function() {
                     calendarResize();
                 },

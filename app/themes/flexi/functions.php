@@ -153,3 +153,14 @@ include('customizer.php');
 
 
 add_action( 'customize_register', 'flexi_customize_register' );
+
+
+/**
+ *
+ * Admin Button
+ */
+
+// To add button
+add_action( 'post_submitbox_start', function() {
+	print '<a href="#">Generate file</button>';
+});

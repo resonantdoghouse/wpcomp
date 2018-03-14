@@ -25,16 +25,13 @@ function dev_navwalker_enqueue_scripts() {
 
 
 class Description_Walker extends Walker_Nav_Menu {
+
 	/**
-	 * Start the element output.
-	 *
-	 * @param  string $output Passed by reference. Used to append additional content.
-	 * @param  object $item Menu item data object.
-	 * @param  int $depth Depth of menu item. May be used for padding.
-	 * @param  array|object $args Additional strings. Actually always an
-	 * instance of stdClass. But this is WordPress.
-	 *
-	 * @return void
+	 * @param string $output
+	 * @param WP_Post $item
+	 * @param int $depth
+	 * @param array $args
+	 * @param int $id
 	 */
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$classes = empty ( $item->classes ) ? array() : (array) $item->classes;

@@ -16,4 +16,5 @@ app/uploads/*
 !app/themes/flexi
 !app/themes/redstar
 !app/themes/redsprout
+!app/themes/dev-*
 .idea/*

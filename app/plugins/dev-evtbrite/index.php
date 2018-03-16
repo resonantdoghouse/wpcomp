@@ -49,7 +49,7 @@ function load_admin_js() {
 
 function enqueue_admin_js() {
 	// Isn't it nice to use dependencies and the already registered core js files?
-	wp_enqueue_script( 'dev-evtbr-js', plugin_dir_url( __FILE__ ) . '/js/dev-evtbr.js', array( 'jquery' ), '', true );
+	wp_enqueue_script( 'dev-evtbr-js', plugin_dir_url( __FILE__ ) . '/js/dev-evtbr.js', array( 'jquery' ), '0.0.1', true );
 
 	wp_localize_script( 'dev-evtbr-js', 'dev_evtbr',
 		array(

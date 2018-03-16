@@ -1,8 +1,7 @@
 (function ($) {
 
     /**
-     *
-     * @type {*|HTMLElement}
+     * Eventbrite
      */
     var $tokenInput = $('#dev-evtbr-import-token');
     var eventsArray = [];

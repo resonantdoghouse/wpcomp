@@ -16,13 +16,16 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit();
 }
 
+
+define( 'DEV_EVTBR_PATH', plugin_dir_url( __FILE__ ) );
+
 add_action( 'admin_menu', 'dev_evtbr_menu' );
 
 function dev_evtbr_menu() {
 	$dev_evtbr_menu_page = add_submenu_page(
 		'tools.php',
 		'Dev EvtBr',
-		'Eventbrite Import',
+		'Import Events',
 		'manage_options',
 		'dev-evtbr',
 		'dev_evtbr_submenu_callback' );
@@ -31,13 +34,14 @@ function dev_evtbr_menu() {
 }
 
 function dev_evtbr_submenu_callback() {
-	echo '<div class="wrap"><div id="icon-tools" class="icon32"></div>';
+	echo '<div class="wrap dev-evtbr-fadein"><div id="icon-tools" class="icon32"></div>';
 	echo '<h2>Import Events from Eventbrite</h2>';
+	echo '<p>This tool will import eventbrite data and create new posts with <strong>The Events Calendar plugin.</strong></p>';
 	echo '<p>Register an app with your Eventbrite account first. Then get an auth key at: <a target="_blank" href="https://www.eventbrite.ca/myaccount/apps/">eventbrite.ca/myaccount/apps/</a></p>';
 	echo '<p>paste in the key for Your personal OAuth token</p>';
-	echo '<input id="dev-evtbr-import-token" type="text" placeholder="api token">';
-	echo '<button id="dev-evtbr-import-events">Load Events</button>';
-	echo '<div id="dev-evtbr-appended-events"></div>';
+	echo '<input id="dev-evtbr-import-token" class="dev-evtbr-import-token" type="text" placeholder="api token">';
+	echo '<button id="dev-evtbr-import-events" class="dev-evtbr-import-events">Load Events</button>';
+	echo '<div id="dev-evtbr-appended-events" class="dev-evtbr-appended-events"></div>';
 	echo '</div>';
 }
 
@@ -49,13 +53,15 @@ function load_admin_js() {
 
 function enqueue_admin_js() {
 	// Isn't it nice to use dependencies and the already registered core js files?
-	wp_enqueue_script( 'dev-evtbr-js', plugin_dir_url( __FILE__ ) . '/js/dev-evtbr.js', array( 'jquery' ), '0.0.1', true );
+	wp_enqueue_script( 'dev-evtbr-js', DEV_EVTBR_PATH . '/js/dev-evtbr.js', array( 'jquery' ), '0.0.1', true );
 
 	wp_localize_script( 'dev-evtbr-js', 'dev_evtbr',
 		array(
 			'rest_url' => rest_url(),
-			'nonce' => wp_create_nonce('wp_rest')
+			'nonce'    => wp_create_nonce( 'wp_rest' )
 		)
 	);
+
+	wp_enqueue_style( 'dev-evtbr', DEV_EVTBR_PATH . '/css/dev-evtbr.css' );
 
 }

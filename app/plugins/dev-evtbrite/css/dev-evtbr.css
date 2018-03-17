@@ -1,0 +1,75 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+.dev-evtbr-appended-events {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.dev-evtbr-preview {
+  border: 1px dashed #fff;
+  background: rgba(245, 245, 245, 0.9);
+  padding: .5rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 25%;
+          flex: 1 1 25%; }
+  .dev-evtbr-preview img {
+    max-width: 100%; }
+
+.dev-evtbr-import-events,
+.dev-evtbr-import-events-to-wp {
+  padding: .5rem 1rem;
+  -webkit-transition: .5s;
+  transition: .5s;
+  background: #0a0a0e;
+  color: whitesmoke;
+  border: none;
+  outline: 0;
+  border: 1px solid #0a0a0e; }
+  .dev-evtbr-import-events:hover:not([disabled]), .dev-evtbr-import-events:focus:not([disabled]),
+  .dev-evtbr-import-events-to-wp:hover:not([disabled]),
+  .dev-evtbr-import-events-to-wp:focus:not([disabled]) {
+    background: #3d3d65;
+    color: whitesmoke; }
+
+.dev-evtbr-import-events-to-wp {
+  position: relative; }
+  .dev-evtbr-import-events-to-wp::before {
+    content: 'click below to';
+    position: absolute;
+    left: 50%;
+    top: -5%;
+    -webkit-transform: translate(-50%, -1rem);
+            transform: translate(-50%, -1rem);
+    color: black; }
+
+.dev-evtbr-import-token {
+  padding: .5rem 1rem;
+  border: 1px solid #0a0a0e;
+  outline: 0; }
+  .dev-evtbr-import-token:focus {
+    border: 1px solid #9494f4;
+    outline: 0; }
+
+.dev-evtbr-fadein {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
+/**
+ * Animation
+ */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }

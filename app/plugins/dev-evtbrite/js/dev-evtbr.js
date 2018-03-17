@@ -59,11 +59,15 @@
                     });
 
                     htmlTemplate = `
-                        <h2>${event.name.text}</h2>
-                        <p>${evtDesc}</p>
+                        <div class="dev-evtbr-preview dev-evtbr-fadein"> 
+                        
+                        <h2><small>title:</small> ${event.name.text}</h2>
+                        
+                        <p><small>description:</small> ${evtDesc}</p>
                         <img src="${imgUrl}" alt="">
-                        <p>Start date: <time>${startDate}</time></p>
-                        <p>End date: <time>${endDate}</time></p>
+                        <p><small>start date:</small> <time>${startDate}</time></p>
+                        <p><small>end date:</small> <time>${endDate}</time></p>
+                        </div>
                     `;
 
                     $('#dev-evtbr-appended-events').append(htmlTemplate);
@@ -71,6 +75,11 @@
                 });// .each
 
                 $('#dev-evtbr-import-events').attr('disabled', 'disabled');
+                $('#dev-evtbr-appended-events').before(`
+                    <p id="dev-evtbr-preview-msg" class="dev-evtbr-fadein">
+                        <small>event import preview</small>
+                    </p>
+                `);
 
             });// .ajax
 
@@ -79,7 +88,12 @@
 
             // append import button
             if (!$('#dev-evtbr-import-events-to-wp').length) {
-                $('#dev-evtbr-import-events').after('<button id="dev-evtbr-import-events-to-wp">Import Events to WordPress</button>');
+                $('#dev-evtbr-import-events').after(`
+                    <button id="dev-evtbr-import-events-to-wp" 
+                            class="dev-evtbr-import-events-to-wp dev-evtbr-fadein">
+                            Import Events to WordPress
+                    </button>
+                `);
             }
 
             // Events Import button click
@@ -121,13 +135,15 @@
                     });
                 }
 
-                let confViewEvents = confirm('Events Imported, would you like to go to view the event listings?');
-
-                if(confViewEvents){
-                    window.location = "edit.php?post_type=tribe_events";
-                }
+                // let confViewEvents = confirm('Events Imported, would you like to go to view the event listings?');
+                //
+                // if (confViewEvents) {
+                //     window.location = "edit.php?post_type=tribe_events";
+                // }
                 $('#dev-evtbr-import-events-to-wp').attr('disabled', 'disabled');
-                $('#dev-evtbr-appended-events').empty();
+                $('#dev-evtbr-appended-events').fadeOut(500);
+                $('#dev-evtbr-preview-msg').hide();
+                $('#dev-evtbr-appended-events').before('<h3 class="dev-evtbr-fadein">Events posted</h3>');
 
             });
 

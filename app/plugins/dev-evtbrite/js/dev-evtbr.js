@@ -1,15 +1,18 @@
 (function ($) {
 
-    /**
-     * Eventbrite
-     */
-    var $tokenInput = $('#dev-evtbr-import-token');
-    var eventsArray = [];
+    const $tokenInput = $('#dev-evtbr-import-token');
+    // array of eventbrite events
+    let eventsArray = [];
+    // array of events in wordpress
+    let wpEventsArray = [];
 
+    /**
+     * Load events after input of api token for auth
+     */
     $('#dev-evtbr-import-events').on('click', function () {
 
-        var token = $tokenInput.val();
-        var ajaxSettings = {
+        let token = $tokenInput.val();
+        let eventBriteSettings = {
             "async": true,
             "crossDomain": true,
             "url": "https://www.eventbriteapi.com/v3/users/me/owned_events/?token=" + token,
@@ -20,18 +23,23 @@
         /**
          * Check if token has value if so send ajax request
          */
-        if (token.length > 1) {
+        if (token.length > 6) {
+            /**
+             * Get Eventbrite events
+             */
+            $.ajax(eventBriteSettings).done(function (data) {
 
-            $.ajax(ajaxSettings).done(function (data) {
-
-                var events = data.events;
+                let events = data.events;
 
                 $.each(events, function (index, event) {
+
                     // console.log(event);
-                    var postDate = event.start.local.split("T")[0];
-                    var imgUrl = '';
-                    var evtDesc = '';
-                    var htmlTemplate = '';
+
+                    let startDate = event.start.local.split("T")[0];
+                    let endDate = event.end.local.split("T")[0];
+                    let imgUrl = '';
+                    let evtDesc = '';
+                    let htmlTemplate;
 
                     if (event.logo !== null) {
                         imgUrl = event.logo.original.url;
@@ -43,43 +51,63 @@
 
                     eventsArray.push({
                         title: event.name.text,
-                        start: postDate,
+                        start: startDate,
+                        end: endDate,
                         description: evtDesc,
                         url: event.url,
                         imageurl: imgUrl
                     });
 
-                    htmlTemplate += '<h2>' + event.name.text + '</h2>';
-                    htmlTemplate += '<p>' + evtDesc + '</p>';
-                    htmlTemplate += '<img src="' + imgUrl + '"</>';
+                    htmlTemplate = `
+                        <h2>${event.name.text}</h2>
+                        <p>${evtDesc}</p>
+                        <img src="${imgUrl}" alt="">
+                        <p>Start date: <time>${startDate}</time></p>
+                        <p>End date: <time>${endDate}</time></p>
+                    `;
 
                     $('#dev-evtbr-appended-events').append(htmlTemplate);
 
                 });// .each
+
+                $('#dev-evtbr-import-events').attr('disabled', 'disabled');
+
             });// .ajax
 
-            $('#dev-evtbr-import-events').after('<button id="dev-evtbr-import-events-to-wp">Import Events to WordPress</button>');
+            // callback after loading data from eventbrite
+            loadWpEvents();
 
-            /**
-             * Event Import
-             */
+            // append import button
+            if (!$('#dev-evtbr-import-events-to-wp').length) {
+                $('#dev-evtbr-import-events').after('<button id="dev-evtbr-import-events-to-wp">Import Events to WordPress</button>');
+            }
+
+            // Events Import button click
             $('#dev-evtbr-import-events-to-wp').on('click', function () {
 
-                var eventData = {};
-                console.log(eventsArray);
+                let eventData = {};
+                // console.log(eventsArray);
                 $.each(eventsArray, function (index, value) {
 
                     eventData.title = value.title;
                     eventData.content = value.description;
                     eventData.start_date = value.start;
-                    eventData.end_date = value.start;
-                    console.log(eventData);
+                    eventData.end_date = value.end;
+                    eventData.slug = value.title.replace(/ /g, '-');
 
-                    postEvent(eventData);
+                    if (wpEventsArray.indexOf(eventData.slug) == -1) {
+                        console.log('slug not found, creating new post');
+                        postEvent(eventData);
+                    } else {
+                        console.log('slug found, not creating new post');
+                    }
+
                 });
 
-                // console.log(eventsArray);
-
+                /**
+                 * Post Events from eventbrite to WP Events Calendar
+                 * @param eventData
+                 */
                 function postEvent(eventData) {
                     $.ajax({
                         method: 'post',
@@ -90,18 +118,45 @@
                         }
                     }).done(function (response) {
                         // console.log(response);
-                        $('#dev-evtbr-appended-events').empty();
-                        // $('#close-comments').after('<p class="comment-status">Comments are now ' + commentStatus + ' for this post.</p>');
                     });
                 }
 
-                // alert('Events Imported');
+                let confViewEvents = confirm('Events Imported, would you like to go to view the event listings?');
+
+                if(confViewEvents){
+                    window.location = "edit.php?post_type=tribe_events";
+                }
+                $('#dev-evtbr-import-events-to-wp').attr('disabled', 'disabled');
+                $('#dev-evtbr-appended-events').empty();
 
             });
 
+            function loadWpEvents() {
+                let wpDataSettings = {
+                    "async": true,
+                    "url": dev_evtbr.rest_url + 'tribe/events/v1/events',
+                    "method": "GET"
+                }
+
+                $.ajax(wpDataSettings).done(function (data) {
+                    let wpEvents = data.events;
+
+                    $.each(wpEvents, function (index, value) {
+                        wpEventsArray.push(
+                            value.slug
+                        );
+                    });
+
+                    // console.log($.inArray('', wpEventsArray));
+
+                }).fail(function (err) {
+                    console.log(err);
+                });
+
+                console.log(wpEventsArray);
+            }
 
         }// token.length
-
     });// #dev-evtbr-import-events on click
 
 })(jQuery);

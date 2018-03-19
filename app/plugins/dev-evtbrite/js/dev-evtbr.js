@@ -6,11 +6,45 @@
     let eventsArray = [];
     // array of events in wordpress
     let wpEventsArray = [];
+    let eventData = {};
+
+
+
+
+
+    function loadWpEvents() {
+
+        let wpDataSettings = {
+            "async": true,
+            "url": dev_evtbr.rest_url + 'tribe/events/v1/events?per_page=100',
+            "method": "GET"
+        }
+
+        $.ajax(wpDataSettings).done(function (data) {
+
+            let wpEvents = data.events;
+
+            $.each(wpEvents, function (index, value) {
+                wpEventsArray.push(
+                    value.slug
+                );
+            });
+
+            // console.log(wpEventsArray);
+
+        }).fail(function (err) {
+            console.log(err);
+        });
+
+    }// loadWpEvents
+
 
     /**
      * Load events after input of api token for auth
      */
     $('#dev-evtbr-import-events').on('click', function () {
+
+        loadWpEvents();
 
         let token = $tokenInput.val();
         let eventBriteSettings = {
@@ -30,7 +64,8 @@
              */
             $.ajax(eventBriteSettings).done(function (data) {
 
-                console.log(data);
+                console.log('loading events');
+                // console.log(data);
 
                 let events = data.events;
 
@@ -81,13 +116,8 @@
                 `);
 
 
-                // callback after loading data from eventbrite
-                // loadWpEvents();
-
             });// .ajax
 
-
-            // console.log(wpEventsArray);
 
             // append import button
             if (!$('#dev-evtbr-import-events-to-wp').length) {
@@ -102,7 +132,6 @@
             // Events Import button click
             $('#dev-evtbr-import-events-to-wp').on('click', function () {
 
-                let eventData = {};
                 $.each(eventsArray, function (index, value) {
 
                     let img = checkNull(value.imageurl);
@@ -128,22 +157,20 @@
                  */
                 function postEvent(eventData) {
 
-                    loadWpEvents();
-console.log(wpEventsArray);
-                    if ($.inArray(eventData.slug, wpEventsArray) == -1) {
-                        console.log($.inArray(eventData.slug, wpEventsArray));
-                        console.log('slug found, not creating new post');
+                    console.log(eventData);
+                    console.log(wpEventsArray);
+
+                    if ($.inArray(eventData.slug, wpEventsArray) !== -1) {
+                        // console.log($.inArray(eventData.slug, wpEventsArray));
+                        console.log('slug found!' + eventData.slug);
                         return;
                     } else {
-                        console.log('slug not found, creating new post');
+                        console.log('slug not found?' + eventData.slug);
                     }
 
-
-                    // console.log(eventData.image);
-                    // let imageName = eventData.image.substring(8);
-                    // imageName = imageName.substring(0, imageName.indexOf('?'));
-                    // console.log(imageName);
-
+                    /**
+                     * Post Events, rest api
+                     */
                     $.ajax({
                         method: 'post',
                         url: dev_evtbr.rest_url + 'tribe/events/v1/events',
@@ -154,6 +181,7 @@ console.log(wpEventsArray);
                         }
                     }).done(function (response) {
                         console.log(response);
+                        loadWpEvents();
                     });
                 }
 
@@ -164,27 +192,7 @@ console.log(wpEventsArray);
 
             });
 
-            function loadWpEvents() {
 
-                let wpDataSettings = {
-                    "async": true,
-                    "url": dev_evtbr.rest_url + 'tribe/events/v1/events',
-                    "method": "GET"
-                }
-
-                $.ajax(wpDataSettings).done(function (data) {
-                    let wpEvents = data.events;
-
-                    $.each(wpEvents, function (index, value) {
-                        wpEventsArray.push(
-                            value.slug
-                        );
-                    });
-
-                }).fail(function (err) {
-                    console.log(err);
-                });
-            }
 
             function checkNull(data) {
                 if (data !== null && data !== '') {

@@ -9,6 +9,16 @@
 	],
 "creatorBuild": "26330",
 "files": {
+	"\/css\/dev-evtbr.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/css\/dev-evtbr-min.css",
+		"oF": 0,
+		"oS": 3
+		},
 	"\/css\/dev-evtbr.scss": {
 		"aP": 1,
 		"bl": 0,
@@ -38,6 +48,12 @@
 		"oF": 1,
 		"sC": 0,
 		"tS": 0
+		},
+	"\/node_modules": {
+		"ft": 65536,
+		"oA": 2,
+		"oAP": "\/build\/node_modules",
+		"oF": 0
 		}
 	},
 "hooks": [

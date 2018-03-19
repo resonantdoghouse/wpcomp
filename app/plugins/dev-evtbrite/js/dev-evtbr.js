@@ -1,5 +1,6 @@
 (function ($) {
 
+
     const $tokenInput = $('#dev-evtbr-import-token');
     // array of eventbrite events
     let eventsArray = [];
@@ -29,11 +30,11 @@
              */
             $.ajax(eventBriteSettings).done(function (data) {
 
+                console.log(data);
+
                 let events = data.events;
 
                 $.each(events, function (index, event) {
-
-                    // console.log(event);
 
                     let startDate = event.start.local.split("T")[0];
                     let endDate = event.end.local.split("T")[0];
@@ -60,9 +61,7 @@
 
                     htmlTemplate = `
                         <div class="dev-evtbr-preview dev-evtbr-fadein"> 
-                        
                         <h2><small>title:</small> ${event.name.text}</h2>
-                        
                         <p><small>description:</small> ${evtDesc}</p>
                         <img src="${imgUrl}" alt="">
                         <p><small>start date:</small> <time>${startDate}</time></p>
@@ -81,10 +80,14 @@
                     </p>
                 `);
 
+
+                // callback after loading data from eventbrite
+                // loadWpEvents();
+
             });// .ajax
 
-            // callback after loading data from eventbrite
-            loadWpEvents();
+
+            // console.log(wpEventsArray);
 
             // append import button
             if (!$('#dev-evtbr-import-events-to-wp').length) {
@@ -100,21 +103,22 @@
             $('#dev-evtbr-import-events-to-wp').on('click', function () {
 
                 let eventData = {};
-                // console.log(eventsArray);
                 $.each(eventsArray, function (index, value) {
 
+                    let img = checkNull(value.imageurl);
+                    let description = checkNull(value.description);
+
+                    img = String(img);
+                    img.substring(0, img.indexOf('?'));
+
                     eventData.title = value.title;
-                    eventData.content = value.description;
+                    eventData.description = description;
                     eventData.start_date = value.start;
                     eventData.end_date = value.end;
                     eventData.slug = value.title.replace(/ /g, '-');
+                    eventData.image = img;
 
-                    if (wpEventsArray.indexOf(eventData.slug) == -1) {
-                        console.log('slug not found, creating new post');
-                        postEvent(eventData);
-                    } else {
-                        console.log('slug found, not creating new post');
-                    }
+                    postEvent(eventData);
 
                 });
 
@@ -123,23 +127,36 @@
                  * @param eventData
                  */
                 function postEvent(eventData) {
+
+                    loadWpEvents();
+console.log(wpEventsArray);
+                    if ($.inArray(eventData.slug, wpEventsArray) == -1) {
+                        console.log($.inArray(eventData.slug, wpEventsArray));
+                        console.log('slug found, not creating new post');
+                        return;
+                    } else {
+                        console.log('slug not found, creating new post');
+                    }
+
+
+                    // console.log(eventData.image);
+                    // let imageName = eventData.image.substring(8);
+                    // imageName = imageName.substring(0, imageName.indexOf('?'));
+                    // console.log(imageName);
+
                     $.ajax({
                         method: 'post',
                         url: dev_evtbr.rest_url + 'tribe/events/v1/events',
                         data: eventData,
                         beforeSend: function (xhr) {
                             xhr.setRequestHeader('X-WP-Nonce', dev_evtbr.nonce);
+                            // xhr.setRequestHeader( 'Content-Disposition' , 'filename=' + eventData.image.substr(8));
                         }
                     }).done(function (response) {
-                        // console.log(response);
+                        console.log(response);
                     });
                 }
 
-                // let confViewEvents = confirm('Events Imported, would you like to go to view the event listings?');
-                //
-                // if (confViewEvents) {
-                //     window.location = "edit.php?post_type=tribe_events";
-                // }
                 $('#dev-evtbr-import-events-to-wp').attr('disabled', 'disabled');
                 $('#dev-evtbr-appended-events').fadeOut(500);
                 $('#dev-evtbr-preview-msg').hide();
@@ -148,6 +165,7 @@
             });
 
             function loadWpEvents() {
+
                 let wpDataSettings = {
                     "async": true,
                     "url": dev_evtbr.rest_url + 'tribe/events/v1/events',
@@ -163,13 +181,16 @@
                         );
                     });
 
-                    // console.log($.inArray('', wpEventsArray));
-
                 }).fail(function (err) {
                     console.log(err);
                 });
+            }
 
-                console.log(wpEventsArray);
+            function checkNull(data) {
+                if (data !== null && data !== '') {
+                    // console.log(data);
+                    return data;
+                }
             }
 
         }// token.length

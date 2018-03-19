@@ -36,10 +36,10 @@ function dev_evtbr_menu() {
 function dev_evtbr_submenu_callback() {
 	echo '<div class="wrap dev-evtbr-fadein"><div id="icon-tools" class="icon32"></div>';
 	echo '<h2>Import Events from Eventbrite</h2>';
-	echo '<p>This tool will import eventbrite data and create new posts with <strong>The Events Calendar plugin.</strong></p>';
+	echo '<p>This tool will import eventbrite data and create new posts with <strong>The Events Calendar plugin. 🗓</strong></p>';
 	echo '<p>Register an app with your Eventbrite account first. Then get an auth key at: <a target="_blank" href="https://www.eventbrite.ca/myaccount/apps/">eventbrite.ca/myaccount/apps/</a></p>';
-	echo '<p>paste in the key for Your personal OAuth token</p>';
-	echo '<input id="dev-evtbr-import-token" class="dev-evtbr-import-token" type="text" placeholder="api token">';
+	echo '<p>paste in the key for Your personal OAuth token. Please note your <strong>api key is not stored in the database</strong>, you will have to enter it each time. </p>';
+	echo '<input id="dev-evtbr-import-token" class="dev-evtbr-import-token" type="password" placeholder="api token">';
 	echo '<button id="dev-evtbr-import-events" class="dev-evtbr-import-events">Load Events</button>';
 	echo '<div id="dev-evtbr-appended-events" class="dev-evtbr-appended-events"></div>';
 	echo '</div>';
@@ -52,7 +52,9 @@ function load_admin_js() {
 }
 
 function enqueue_admin_js() {
-	// Isn't it nice to use dependencies and the already registered core js files?
+
+	wp_enqueue_script('jquery');
+
 	wp_enqueue_script( 'dev-evtbr-js', DEV_EVTBR_PATH . '/js/dev-evtbr.js', array( 'jquery' ), '0.0.1', true );
 
 	wp_localize_script( 'dev-evtbr-js', 'dev_evtbr',

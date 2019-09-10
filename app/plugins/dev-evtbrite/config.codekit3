@@ -7,7 +7,7 @@
 		"uuidString": "D0E80D5D-0FD3-4692-8B2E-78918B59B245"
 		}
 	],
-"creatorBuild": "26330",
+"creatorBuild": "26680",
 "files": {
 	"\/css\/dev-evtbr.css": {
 		"aP": 1,
@@ -48,12 +48,6 @@
 		"oF": 1,
 		"sC": 0,
 		"tS": 0
-		},
-	"\/node_modules": {
-		"ft": 65536,
-		"oA": 2,
-		"oAP": "\/build\/node_modules",
-		"oF": 0
 		}
 	},
 "hooks": [
@@ -64,7 +58,8 @@
 	"creationDate": 542964886,
 	"displayValue": "dev-evtbrite",
 	"displayValueWasSetByUser": 0,
-	"iconImageName": "meme-daenerys"
+	"iconImageName": "meme-daenerys",
+	"iconImageWasSetByUser": 0
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
@@ -1867,6 +1862,7 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
+		"outputFormat": 0,
 		"quality": 100
 		},
 	"languageDefaultsJS": {

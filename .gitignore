@@ -24,6 +24,7 @@ app/themes/*
 !app/themes/redsprout
 !app/themes/dev-*
 !app/themes/jb-*
+!app/themes/2017-rest
 
 # media
 app/uploads/*

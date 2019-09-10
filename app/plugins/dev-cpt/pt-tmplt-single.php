@@ -3,11 +3,11 @@
 get_header();
 
 
-foreach ( get_the_terms( get_the_ID(), 'bass-type' ) as $term ) {
-	echo $term->name;
-	echo $term->slug;
-//	ddd($term);
-}
+// foreach ( get_the_terms( get_the_ID(), 'bass-type' ) as $term ) {
+// 	echo $term->name;
+// 	echo $term->slug;
+// //	ddd($term);
+// }
 
 
 while ( have_posts() ) : the_post();

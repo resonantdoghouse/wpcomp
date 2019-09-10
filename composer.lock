@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c6cd6446e84c4e688818164128c24d37",
+    "content-hash": "b4735a9052f44ce070a7156bfceac68c",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.4.0",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b"
+                "reference": "141b272484481432cda342727a427dc1e206bfa0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
-                "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
+                "url": "https://api.github.com/repos/composer/installers/zipball/141b272484481432cda342727a427dc1e206bfa0",
+                "reference": "141b272484481432cda342727a427dc1e206bfa0",
                 "shasum": ""
             },
             "require": {
@@ -29,7 +29,7 @@
             },
             "require-dev": {
                 "composer/composer": "1.0.*@dev",
-                "phpunit/phpunit": "4.1.*"
+                "phpunit/phpunit": "^4.8.36"
             },
             "type": "composer-plugin",
             "extra": {
@@ -73,6 +73,7 @@
                 "RadPHP",
                 "SMF",
                 "Thelia",
+                "Whmcs",
                 "WolfCMS",
                 "agl",
                 "aimeos",
@@ -95,20 +96,24 @@
                 "installer",
                 "itop",
                 "joomla",
+                "known",
                 "kohana",
                 "laravel",
                 "lavalite",
                 "lithium",
                 "magento",
+                "majima",
                 "mako",
                 "mediawiki",
                 "modulework",
+                "modx",
                 "moodle",
                 "osclass",
                 "phpbb",
                 "piwik",
                 "ppi",
                 "puppet",
+                "pxcms",
                 "reindex",
                 "roundcube",
                 "shopware",
@@ -121,20 +126,20 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2017-08-09T07:53:48+00:00"
+            "time": "2019-08-12T15:00:31+00:00"
         },
         {
             "name": "fancyguy/webroot-installer",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fancyguy/webroot-installer.git",
-                "reference": "4888a3dad9ab3b3da505a149230be0ec2ab837f4"
+                "reference": "a2d5c2e149d837e5580a62a91d3c91577aa30d28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fancyguy/webroot-installer/zipball/4888a3dad9ab3b3da505a149230be0ec2ab837f4",
-                "reference": "4888a3dad9ab3b3da505a149230be0ec2ab837f4",
+                "url": "https://api.github.com/repos/fancyguy/webroot-installer/zipball/a2d5c2e149d837e5580a62a91d3c91577aa30d28",
+                "reference": "a2d5c2e149d837e5580a62a91d3c91577aa30d28",
                 "shasum": ""
             },
             "require-dev": {
@@ -163,25 +168,23 @@
             ],
             "description": "A composer installer for libraries that live in an application webroot.",
             "homepage": "http://fancyguy.github.com/webroot-installer/",
-            "time": "2013-01-29T22:51:45+00:00"
+            "time": "2013-03-15T17:51:14+00:00"
         },
         {
             "name": "wordpress/wordpress",
-            "version": "4.8.1",
+            "version": "5.2.3",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/WordPress/WordPress/archive/4.8.1.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://github.com/WordPress/WordPress/archive/5.2.3.zip"
             },
             "require": {
-                "fancyguy/webroot-installer": "1.0.0"
+                "fancyguy/webroot-installer": "^1.0"
             },
             "type": "webroot"
         },
         {
             "name": "wpackagist-plugin/custom-field-suite",
-            "version": "2.5.10",
+            "version": "2.5.16",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/custom-field-suite/",
@@ -189,9 +192,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/custom-field-suite.zip?timestamp=1500927977",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/plugin/custom-field-suite.zip?timestamp=1557537859"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -209,9 +210,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/kint-debugger.1.2.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/plugin/kint-debugger.1.2.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -221,17 +220,15 @@
         },
         {
             "name": "wpackagist-plugin/piklist",
-            "version": "0.9.9.12",
+            "version": "1.0.4",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/piklist/",
-                "reference": "tags/0.9.9.12"
+                "reference": "tags/1.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/piklist.0.9.9.12.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/plugin/piklist.1.0.4.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -241,17 +238,15 @@
         },
         {
             "name": "wpackagist-plugin/pods",
-            "version": "2.6.10",
+            "version": "2.7.15",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/pods/",
-                "reference": "tags/2.6.10"
+                "reference": "tags/2.7.15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/pods.2.6.10.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/plugin/pods.2.7.15.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -269,9 +264,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/show-current-template.0.3.0.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/plugin/show-current-template.0.3.0.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -281,17 +274,15 @@
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",
-            "version": "5.4",
+            "version": "12.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
-                "reference": "tags/5.4"
+                "reference": "tags/12.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.5.4.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.12.0.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -309,9 +300,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-helpers.1.17.0.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/plugin/wp-helpers.1.17.0.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -321,17 +310,15 @@
         },
         {
             "name": "wpackagist-theme/twentysixteen",
-            "version": "1.3",
+            "version": "2.0",
             "source": {
                 "type": "svn",
                 "url": "https://themes.svn.wordpress.org/twentysixteen/",
-                "reference": "1.3"
+                "reference": "2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/theme/twentysixteen.1.3.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://downloads.wordpress.org/theme/twentysixteen.2.0.zip"
             },
             "require": {
                 "composer/installers": "~1.0"

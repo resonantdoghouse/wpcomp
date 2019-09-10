@@ -1,0 +1,28 @@
+.jb-modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    background: skyblue;
+}
+
+.jb-modal.jb-modal--active {
+    display: flex;
+    animation: fade-in 2s 0.5s cubic-bezier(0, 0.5, 0, 1) forwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        /*transform: translateY(-10rem);*/
+    }
+    100% {
+        opacity: 1;
+        /*transform: none;*/
+    }
+}

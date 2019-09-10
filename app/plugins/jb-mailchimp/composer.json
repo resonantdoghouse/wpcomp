@@ -1,0 +1,8 @@
+{
+  "require": {
+    "drewm/mailchimp-api": "^2.5"
+  },
+  "require-dev": {
+    "kint-php/kint": "^3.1"
+  }
+}

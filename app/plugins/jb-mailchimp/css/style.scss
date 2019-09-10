@@ -1,0 +1,36 @@
+.jb-mailchimp-options-form {
+  .form-row {
+    display: flex;
+    flex-flow: row wrap;
+    &__inner {
+
+    }
+    > label {
+      display: flex;
+      flex-direction: column;
+      font-weight: bold;
+      input, select {
+        font-weight: normal;
+      }
+    }
+  }
+  .mc-template-imgs {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .mc-template-img {
+    flex: 1 1 25%;
+    width: 25%;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+// id used to target admin menu, img is the custom icon
+#toplevel_page_jb-mailchimp-inc-admin-options-page {
+  img {
+    max-width: 80%;
+  }
+}

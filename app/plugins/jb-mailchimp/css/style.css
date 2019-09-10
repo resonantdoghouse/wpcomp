@@ -1,0 +1,24 @@
+.jb-mailchimp-options-form .form-row {
+  display: flex;
+  flex-flow: row wrap; }
+  .jb-mailchimp-options-form .form-row > label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold; }
+    .jb-mailchimp-options-form .form-row > label input, .jb-mailchimp-options-form .form-row > label select {
+      font-weight: normal; }
+
+.jb-mailchimp-options-form .mc-template-imgs {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start; }
+
+.jb-mailchimp-options-form .mc-template-img {
+  flex: 1 1 25%;
+  width: 25%;
+  max-width: 100%;
+  height: auto; }
+
+#toplevel_page_jb-mailchimp-inc-admin-options-page img {
+  max-width: 80%; }

@@ -1,20 +1,29 @@
+node_modules/
+.DS_Store
+.idea/*
+
 cache/*
 config/app.php
-.DS_Store
 vendor
 wp/*
 !/wp/.htaccess
-node_modules/
+
+# plugins
 app/plugins/*
 !app/plugins/dev-*
 !app/plugins/redstar-func
 !app/plugins/red-widget
+!app/plugins/jb-*
+
+# themes
 app/themes/*
-app/uploads/*
 !app/themes/minim
 !app/themes/atom
 !app/themes/flexi
 !app/themes/redstar
 !app/themes/redsprout
 !app/themes/dev-*
-.idea/*
+!app/themes/jb-*
+
+# media
+app/uploads/*
